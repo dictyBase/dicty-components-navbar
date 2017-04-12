@@ -54,7 +54,6 @@ export default class Navbar extends React.Component {
         collapseIn: false
     }
 
-
     renderChildren = () => {
         const { children } = this.props
         return React.Children.map(children, (child) => {
@@ -72,7 +71,6 @@ export default class Navbar extends React.Component {
     }
 
     render() {
-        // const defStyle = this.getStyles()
         const {navStyle, contStyle} = this.props
         return (
             <Nav style={ {...navStyle} }>

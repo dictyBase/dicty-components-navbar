@@ -49,58 +49,13 @@ export default class NavItem extends React.Component {
         itemStyle: React.PropTypes.object
     }
 
-    getStyles = () => {
-        return {
-            base: {
-                position: 'relative',
-                display: 'block',
-                boxSizing: 'border-box',
-
-                '@media (min-width: 768px)': {
-                    float: 'left'
-                }
-            },
-            link: {
-                paddingTop: '10px',
-                paddingBottom: '10px',
-                paddingLeft: '15px',
-                paddingRight: '15px',
-                lineHeight: '20px',
-                position: 'relative',
-                display: 'block',
-                boxSizing: 'border-box',
-                textDecoration: 'none',
-                backgroundColor: 'transparent',
-                color: '#ffffff',
-                fontSize: '18px',
-
-                ':hover': {
-                    color: '#ccffcc'
-                },
-
-                ':focus': {
-                    color: '#ffffff',
-                    backgroundColor: '#112968'
-                },
-
-                '@media (min-width: 768px)': {
-                    paddingTop: '15px',
-                    paddingBottom: '15px'
-                }
-            }
-        }
-    }
-
     render() {
-        const defStyle = this.getStyles()
-        const { style, link, title, itemStyle } = this.props
+        const { style, link, title } = this.props
         return (
-          <List ref="list" style={ {...style} }>
-              <Link
-                href={ link }
-                style={ [defStyle.link, itemStyle && itemStyle] }>
-                { title }
-              </Link>
+          <List style={ {...style} }>
+            <Link href={ link }>
+              { title }
+            </Link>
           </List>
         )
     }

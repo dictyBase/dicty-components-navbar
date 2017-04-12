@@ -1,6 +1,45 @@
 import React from 'react'
+import styled from 'styled-components'
 
+const Nav = styled.nav`
+  background-color: #15317e;
+  border: 1px solid #15317e;
+  borderRadius: 0px;
+  position: relative;
+  top: 0px;
+  minHeight: 50px;
+  marginBottom: 20px;
+  display: block;
+  boxSizing: border-box;
+`
+const Container = styled.div`
+  paddingRight: 15px;
+  paddingLeft: 15px;
+  marginRight: auto;
+  marginLeft: auto;
+  boxSizing: border-box;
 
+  @media (min-width: 768px): {
+      width: 750px
+  }
+  @media (min-width: 992px): {
+      width: 970px;
+  }
+  @media (min-width: 1200px): {
+      width: 1170px;
+  }
+`
+const PseudoBefore = styled.span`
+  display: table;
+  content: '';
+  boxSizing: border-box;
+`
+const PseudoAfter = styled.span`
+  clear: both;
+  display: table;
+  content: ;
+  boxSizing: border-box;
+`
 
 export default class Navbar extends React.Component {
     displayName = 'Navigation bar'
@@ -15,52 +54,9 @@ export default class Navbar extends React.Component {
         collapseIn: false
     }
 
-    getStyles = () => {
-        return {
-            navbar: {
-                backgroundColor: '#15317e',
-                border: '1px solid #15317e',
-                borderRadius: '0px',
-                position: 'relative',
-                top: '0px',
-                minHeight: '50px',
-                marginBottom: '20px',
-                display: 'block',
-                boxSizing: 'border-box'
-            },
-            container: {
-                paddingRight: '15px',
-                paddingLeft: '15px',
-                marginRight: 'auto',
-                marginLeft: 'auto',
-                boxSizing: 'border-box',
-
-                '@media (min-width: 768px)': {
-                    width: '750px'
-                },
-                '@media (min-width: 992px)': {
-                    width: '970px'
-                },
-                '@media (min-width: 1200px)': {
-                    width: '1170px'
-                }
-            },
-            pseudoBefore: {
-                display: 'table',
-                content: '',
-                boxSizing: 'border-box'
-            },
-            pseudoAfter: {
-                clear: 'both',
-                display: 'table',
-                content: '',
-                boxSizing: 'border-box'
-            }
-        }
-    }
 
     renderChildren = () => {
-        const {children} = this.props
+        const { children } = this.props
         return React.Children.map(children, (child) => {
             return React.cloneElement(child,
                 {
@@ -76,18 +72,18 @@ export default class Navbar extends React.Component {
     }
 
     render() {
-        const defStyle = this.getStyles()
+        // const defStyle = this.getStyles()
         const {navStyle, contStyle} = this.props
         return (
-            <nav ref="navbar" style={ [defStyle.navbar, navStyle && navStyle] }>
-                <span style={ [defStyle.pseudoBefore] } />
-                    <div ref="container" style={ [defStyle.container, contStyle && contStyle] }>
-                        <span style={ [defStyle.pseudoBefore] } />
-                            { this.renderChildren() }
-                        <span style={ [defStyle.pseudoAfter] } />
-                    </div>
-                <span style={ [defStyle.pseudoAfter] } />
-            </nav>
+            <Nav style={ {...navStyle} }>
+              <PseudoBefore />
+              <Container style={ {...contStyle} }>
+                <PseudoBefore />
+                  { this.renderChildren() }
+                <PseudoAfter />
+              </Container>
+              <PseudoAfter />
+            </Nav>
         )
     }
 }

@@ -120,7 +120,7 @@ export default class NavbarHeader extends React.Component {
         return (
           <button type="button"
             style={ [defStyle.navbarToggle] }
-            onClick= { this.props.navbarToggle }>
+            onClick={ this.props.navbarToggle }>
               <span style={ [defStyle.srOnly] }>Toggle navigation</span>
               <span style={ [defStyle.iconBar] }></span>
               <span style={ [defStyle.iconBar, defStyle.burger] }></span>

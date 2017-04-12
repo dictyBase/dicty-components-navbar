@@ -1,7 +1,61 @@
 import React from 'react'
+import styled from 'styled-components'
 
+const Collapse = styled.div`
+    display: ${ props => props.collapseIn ? 'block' : 'none' };
+    overflowY: ${ props => props.collapseIn ? 'auto' : 'initial' };
+    paddingRight: 15px;
+    paddingLeft: 15px;
+    overflowX: visible;
+    borderTopWidth: 1px;
+    borderTopStyle: solid;
+    boxShadow: 0px 1px 0px rgba(255; 255; 255, .1) inset;
+    marginRight: -15px;
+    marginLeft: -15px;
+    maxHeight: 340px;
+    boxSizing: border-box;
 
+    @media (min-width: 768px): {
+        marginRight: 0px;
+        marginLeft: 0px;
+        paddingRight: 0px;
+        paddingLeft: 0px;
+        height: auto;
+        paddingBottom: 0px;
+        display: block;
+        overflow: visible;
+        width: auto;
+        borderTopWidth: 0px;
+        borderTopStyle: none;
+        boxShadow: none;
+        overflowY: visible
+    }
+`
+const PseudoBefore = styled.span`
+  display: table;
+  content: '';
+  boxSizing: border-box;
+`
+const PseudoAfter = styled.span`
+  clear: both;
+  display: table;
+  content: '';
+  boxSizing: border-box;
+`
+const NavItems = styled.ul`
+  margin: 7.5px -15px;
+  listStyle: outside none none;
+  paddingLeft: 0px;
+  boxSizing: border-box;
 
+  fontFamily: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  fontSize: 14px;
+
+  @media (min-width: 768px): {
+      float: left;
+      margin: 0px
+  }
+`
 export default class NavbarItems extends React.Component {
     displayName = 'Navigation list of items'
 
@@ -14,70 +68,6 @@ export default class NavbarItems extends React.Component {
       activeIndex: 0
     }
 
-    getStyles = () => {
-        let styles = {
-            base: {
-                margin: '7.5px -15px',
-                listStyle: 'outside none none',
-                paddingLeft: '0px',
-                boxSizing: 'border-box',
-
-                fontFamily: '"Helvetica Neue",Helvetica,Arial,sans-serif',
-                fontSize: '14px',
-
-                '@media (min-width: 768px)': {
-                    float: 'left',
-                    margin: '0px'
-                }
-            },
-            collapse: {
-                paddingRight: '15px',
-                paddingLeft: '15px',
-                overflowX: 'visible',
-                borderTopWidth: '1px',
-                borderTopStyle: 'solid',
-                boxShadow: '0px 1px 0px rgba(255, 255, 255, .1) inset',
-                marginRight: '-15px',
-                marginLeft: '-15px',
-                maxHeight: '340px',
-                boxSizing: 'border-box',
-                display: 'none',
-
-                '@media (min-width: 768px)': {
-                    marginRight: '0px',
-                    marginLeft: '0px',
-                    paddingRight: '0px',
-                    paddingLeft: '0px',
-                    height: 'auto',
-                    paddingBottom: '0px',
-                    display: 'block',
-                    overflow: 'visible',
-                    width: 'auto',
-                    borderTopWidth: '0px',
-                    borderTopStyle: 'none',
-                    boxShadow: 'none',
-                    overflowY: 'visible'
-                }
-            },
-            pseudoBefore: {
-                display: 'table',
-                content: '',
-                boxSizing: 'border-box'
-            },
-            pseudoAfter: {
-                clear: 'both',
-                display: 'table',
-                content: '',
-                boxSizing: 'border-box'
-            }
-        }
-        if (this.props.collapseIn) {
-            styles.collapse.display = 'block'
-            styles.collapse.overflowY = 'auto'
-        }
-        return styles
-    }
-
     onClickHandler = (activeIndex) => {
         this.setState({
             activeIndex: activeIndex
@@ -85,8 +75,8 @@ export default class NavbarItems extends React.Component {
     }
 
     renderChildren = () => {
-        const {children} = this.props
-        const {activeIndex} = this.state
+        const { children } = this.props
+        const { activeIndex } = this.state
         return React.Children.map(children, (child, index) => {
             return React.cloneElement(child,
                 {
@@ -99,18 +89,17 @@ export default class NavbarItems extends React.Component {
     }
 
     render() {
-        const defStyle = this.getStyles()
-        const {style} = this.props
+        const { style } = this.props
         return (
-            <div ref ="collapse" style={ [defStyle.collapse] }>
-                <span style={ [defStyle.pseudoBefore] } />
-                    <ul ref="navitems" style={ [defStyle.base, style && style] }>
-                        <span style={ [defStyle.pseudoBefore] } />
-                          { this.renderChildren() }
-                        <span style={ [defStyle.pseudoAfter] } />
-                    </ul>
-                <span style={ [defStyle.pseudoAfter] } />
-            </div>
+            <Collapse>
+              <PseudoBefore />
+                <NavItems style={ {...style} }>
+                  <PseudoBefore />
+                    { this.renderChildren() }
+                  <PseudoAfter />
+                </NavItems>
+              <PseudoAfter />
+            </Collapse>
         )
     }
 }

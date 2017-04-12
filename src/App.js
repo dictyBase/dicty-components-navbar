@@ -31,8 +31,8 @@ class App extends Component {
         <Navbar>
             <NavbarHeader href="http://www.google.com" name="Babel"/>
             <NavbarItems>
-                { navitems.map(item => {
-                    return (<NavItem key={ navitems.indexOf(item) }
+                { navitems.map((item, i) => {
+                    return (<NavItem key={ i }
                                     link={ item.link } title={ item.title }
                             />)
                 }) }

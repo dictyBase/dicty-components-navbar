@@ -1,6 +1,53 @@
 import React from 'react'
+import styled from 'styled-components'
 
+const Dropdown = styled.li`
+  position: relative;
+  display: block;
+  boxSizing: border-box;
 
+  @media (min-width: 768px): {
+      float: left;
+  }
+`
+const Link = styled.a`
+  paddingTop: 10px;
+  paddingBottom: 10px;
+  paddingLeft: 15px;
+  paddingRight: 15px;
+  lineHeight: 20px;
+  position: relative;
+  display: block;
+  boxSizing: border-box;
+  textDecoration: none;
+  backgroundColor: transparent;
+  color: #ffffff;
+  fontSize: 18px;
+
+  &:hover: {
+      color: #ccffcc;
+  }
+
+  &:focus: {
+      color: #ffffff;
+      backgroundColor: #112968;
+  }
+
+  @media (min-width: 768px): {
+      paddingTop: 15px;
+      paddingBottom: 15px;
+  }
+`
+const Caret = styled.b`
+  display: inline-block;
+  width: 0px;
+  height: 0px;
+  marginLeft: 2px;
+  verticalAlign: middle;
+  borderTop: 4px dashed;
+  borderRight: 4px solid transparent;
+  borderLeft: 4px solid transparent;
+`
 
 export default class NavbarDropdown extends React.Component {
     displayName = 'Navigation bar dropdown button'
@@ -128,16 +175,15 @@ export default class NavbarDropdown extends React.Component {
 
     render() {
         const {style, name, itemStyle} = this.props
-        const defStyle = this.getStyles()
         return (
-          <li ref= "dropdown" style={ [defStyle.dropdown, style && style] }>
-              <a ref="link" onClick={ this.handleDropdownClick } href="#"
-                style={ [defStyle.link, itemStyle && itemStyle] }>
+          <Dropdown style={ style }>
+              <Link ref="link" onClick={ this.handleDropdownClick } href="#"
+                style={ itemStyle }>
                   { name }{ ' ' }
-                  <b style={ [defStyle.caret] }></b>
-              </a>
+                  <Caret />
+              </Link>
               { this.renderChildren() }
-          </li>
+          </Dropdown>
         )
     }
 }

@@ -1,87 +1,71 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { Component } from 'react'
+import styled, { ThemeProvider } from 'styled-components'
+import Brand from './Brand'
+import Dropdown from './Dropdown'
+import Link from './Link'
 
 const Nav = styled.nav`
-  background-color: #15317e;
-  border: 1px solid #15317e;
-  borderRadius: 0px;
-  position: relative;
-  top: 0px;
-  minHeight: 50px;
-  marginBottom: 20px;
-  display: block;
-  boxSizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  background: ${ props => props.theme.background ? props.theme.background : 'black' };
+  color: white;
+  min-height: ${ props => props.theme.height ? props.theme.height + 'px' : '50px' };
 `
-const Container = styled.div`
-  paddingRight: 15px;
-  paddingLeft: 15px;
-  marginRight: auto;
-  marginLeft: auto;
-  boxSizing: border-box;
-
-  @media (min-width: 768px): {
-      width: 750px
-  }
-  @media (min-width: 992px): {
-      width: 970px;
-  }
-  @media (min-width: 1200px): {
-      width: 1170px;
-  }
+const Items = styled.ul`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
 `
-const PseudoBefore = styled.span`
-  display: table;
-  content: '';
-  boxSizing: border-box;
-`
-const PseudoAfter = styled.span`
-  clear: both;
-  display: table;
-  content: ;
-  boxSizing: border-box;
-`
-
-export default class Navbar extends React.Component {
-    displayName = 'Navigation bar'
-
-    static propTypes = {
-        navStyle: React.PropTypes.object,
-        contStyle: React.PropTypes.object,
-        children: React.PropTypes.node
+export default class Navbar extends Component {
+    constructor() {
+        super()
+        this.state = {
+            activeIndex: -1
+        }
     }
-
-    state = {
-        collapseIn: false
-    }
-
-    renderChildren = () => {
-        const { children } = this.props
-        return React.Children.map(children, (child) => {
-            return React.cloneElement(child,
-                {
-                    navbarToggle: this.navbarToggle,
-                    collapseIn: this.state.collapseIn
-                }
-            )
+    changeDropdown = (i) => {
+        this.setState({
+            activeIndex: i
         })
     }
-
-    navbarToggle = () => {
-        this.setState({collapseIn: !this.state.collapseIn})
+    renderBrand = () => {
+        const { title, href } = this.props.brand
+        return <Brand title={ title } href={ href } />
     }
-
+    renderItems = () => {
+        const { activeIndex } = this.state
+        let { items } = this.props
+        items = items.map((item, i) => {
+            if (item.dropdown) {
+                return (
+                    <Dropdown
+                      key={ i }
+                      index={ i }
+                      open={ activeIndex === i ? true : false }
+                      items={ item.links }
+                      title={ item.title }
+                      changeDropdown={ this.changeDropdown }
+                    />
+                )
+            } else {
+                return <Link key={ i } href={ item.href } title={ item.title } />
+            }
+        })
+        return <Items>{ items }</Items>
+    }
     render() {
-        const {navStyle, contStyle} = this.props
+        const { theme, brand } = this.props
         return (
-            <Nav style={ {...navStyle} }>
-              <PseudoBefore />
-              <Container style={ {...contStyle} }>
-                <PseudoBefore />
-                  { this.renderChildren() }
-                <PseudoAfter />
-              </Container>
-              <PseudoAfter />
-            </Nav>
+            <ThemeProvider theme={ theme }>
+              <Nav>
+                { brand && this.renderBrand() }
+                { this.renderItems() }
+              </Nav>
+            </ThemeProvider>
         )
     }
 }

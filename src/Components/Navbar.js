@@ -27,6 +27,17 @@ export default class Navbar extends Component {
             activeIndex: -1
         }
     }
+    componentDidMount() {
+        document.addEventListener('click', (e) => {
+            const { activeIndex } = this.state
+            // if (activeIndex > -1) {
+            //     e.preventDefault()
+            //     e.stopImmediatePropagation()
+            //     this.changeDropdown(-1)
+            //     // console.log('fak')
+            // }
+        })
+    }
     changeDropdown = (i) => {
         this.setState({
             activeIndex: i

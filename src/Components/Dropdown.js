@@ -1,30 +1,42 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { darken } from 'polished'
 
 const Menu = styled.ul`
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  margin: auto;
+  ${''/* margin: auto; */}
+  justify-content: center;
   padding: 0;
   position: relative;
+  background: ${ props => props.open ? '#333' : 'transparent' };
+  transition: all 0.2s ease;
 `
 const Toggle = styled.li`
   display: block;
   cursor: pointer;
   margin-top: 10px;
-  padding: 0px 15px 10px 10px;
-  ${''/* position: relative; */}
+  padding: 0px 20px 10px 10px;
   transition: all 0.3s ease;
+
+  ${''/* &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background: ${ props => props.theme.backgroundColor ? darken(props.theme.backgroundColor, 0.2) : '#333' };
+  } */}
 
   &::after {
     content: '';
     position: absolute;
     top: ${ props => props.open ? '9px' : 0 };
     bottom: 0;
-    right: 0;
+    right: 5px;
     margin: auto;
-    ${''/* padding-top: 2px; */}
     width: 0;
     height: 0;
     border-left: 5px solid transparent;
@@ -37,16 +49,13 @@ const Toggle = styled.li`
 `
 const List = styled.ul`
   position: absolute;
-  top: calc(100% + 5px);
+  top: 100%;
   left: 0;
   display: flex;
   flex-direction: column;
-  ${''/* padding-left: 10px;
-  padding-right: 10px; */}
-  padding: ${ props => props.open ? '5px' : '0px' } 0px;
-  ${''/* margin-top: 10px; */}
+  padding: ${ props => props.open ? '0px 0px 5px 0px' : '0px' };
   height: 0px;
-  width: 100%;
+  width: calc(100% - 2px);
   overflow: hidden;
   list-style-type: none;
   transition: all 0.2s ease;
@@ -59,10 +68,7 @@ const List = styled.ul`
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 `
 const Item = styled.li`
-  ${''/* margin-bottom: 5px;
-  margin-left: 10px; */}
   position: relative;
-  ${''/* padding: 5px 0px 5px 10px; */}
   color: black;
   background-size: 0px 0px;
   transition: all 0.14s ease;
@@ -71,37 +77,6 @@ const Item = styled.li`
     color: white;
     background: black;
   }
-
-  ${''/* &::before {
-    content: '';
-    position: absolute;
-    left: 50%;
-    background: black;
-    width: 0%;
-    height: 100%;
-    z-index: -1;
-    transition: inherit;
-  }
-
-  &:hover::before {
-    width: 50%;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    right: 50%;
-    background: black;
-    width: 0%;
-    height: 100%;
-    z-index: -1;
-    transition: inherit;
-    bottom: 5px;
-  }
-
-  &:hover::after {
-    width: 50%;
-  } */}
 `
 const Link = styled.a`
   text-decoration: none;
@@ -118,7 +93,7 @@ export default class Dropdown extends Component {
         }
     }
     componentWillMount() {
-        // document.addEventListener('click', this.handleDocumentClick)
+        document.addEventListener('click', this.handleDocumentClick)
     }
     close = (): void => {
         this.list.style.height = getComputedStyle(this.list).height
@@ -149,11 +124,25 @@ export default class Dropdown extends Component {
             changeDropdown(index)
         }
     }
-    handleDocumentClick = () => {
-        const { open } = this.state
-        if (open) {
+    handleDocumentClick = (e) => {
+
+        const { changeDropdown, open } = this.props
+        const el = this.menu
+        const rect = el.getBoundingClientRect();
+        const minX = rect.left + el.clientLeft;
+        const x = event.clientX;
+        const minY = rect.top + el.clientTop;
+        const y = event.clientY;
+        if (((x < minX || x >= minX + el.clientWidth) || (y < minY || y >= minY + el.clientHeight)) && open) {
+            e.stopImmediatePropagation()
+            e.preventDefault()
             this.close()
+            changeDropdown(-1)
+            return
         }
+        // console.log(open ? 'opened' : 'closed')
+
+        // this.close()
     }
     renderItems = () => {
         let { items } = this.props
@@ -175,12 +164,12 @@ export default class Dropdown extends Component {
         }
     }
     componentWillUnmount() {
-        // document.removeEventListener('click', this.handleDocumentClick)
+        document.removeEventListener('click', this.handleDocumentClick)
     }
     render() {
         const { title, open } = this.props
         return (
-          <Menu>
+          <Menu open={ open } innerRef={ el => this.menu = el }>
             <Toggle onClick={ this.handleClick } open={ open }>
               { title }
             </Toggle>

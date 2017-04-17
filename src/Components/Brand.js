@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const Container = styled.li`
   list-style-type: none;
   display: flex;
+  padding: 10px;
 `
 const Link = styled.a`
   display: block;

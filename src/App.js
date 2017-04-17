@@ -18,7 +18,7 @@ const items = [
     },
     {
         dropdown: true,
-        title: 'Dropdown 2',
+        title: 'Dicty Stock Center',
         links: [
             {
                 name: 'Link 1',
@@ -40,6 +40,26 @@ const items = [
     },
     {
         title: 'Link 1',
+        href: 'google.com'
+    },
+    {
+        title: 'Link 2',
+        href: 'google.com'
+    },
+    {
+        title: 'Link 3',
+        href: 'google.com'
+    },
+    {
+        title: 'Link 4',
+        href: 'google.com'
+    },
+    {
+        title: 'Link 5',
+        href: 'google.com'
+    },
+    {
+        title: 'Link 6',
         href: 'google.com'
     }
 ]

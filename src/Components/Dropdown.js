@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { darken } from 'polished'
+// import { darken } from 'polished'
 
 const Menu = styled.ul`
   display: flex;
@@ -12,6 +12,10 @@ const Menu = styled.ul`
   position: relative;
   background: ${ props => props.open ? '#333' : 'transparent' };
   transition: all 0.2s ease;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 const Toggle = styled.li`
   display: block;
@@ -20,15 +24,9 @@ const Toggle = styled.li`
   padding: 0px 20px 10px 10px;
   transition: all 0.3s ease;
 
-  ${''/* &::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    background: ${ props => props.theme.backgroundColor ? darken(props.theme.backgroundColor, 0.2) : '#333' };
-  } */}
+  @media (max-width: 768px) {
+    position: relative;
+  }
 
   &::after {
     content: '';
@@ -45,6 +43,12 @@ const Toggle = styled.li`
     transform: ${ props => props.open ? 'rotateX(180deg)' : 'rotateX(0deg)' };
     transform-origin: top;
     transition: inherit;
+
+    @media (max-width: 768px) {
+      right: 25px;
+      bottom: 10px;
+      top: none;
+    }
   }
 `
 const List = styled.ul`
@@ -66,6 +70,14 @@ const List = styled.ul`
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+
+  @media (max-width: 768px) {
+    position: relative;
+    top: 0;
+    border: none;
+    color: white;
+    box-shadow: none;
+  }
 `
 const Item = styled.li`
   position: relative;
@@ -77,12 +89,20 @@ const Item = styled.li`
     color: white;
     background: black;
   }
+
+  @media (max-width: 768px) {
+    color: white;
+  }
 `
 const Link = styled.a`
   text-decoration: none;
   color: inherit;
-  padding: 5px 0px 5px 5px;
+  padding: 10px 0px 10px 5px;
   display: block;
+
+  @media (max-width: 768px) {
+    padding: 10px 0px 10px 20px;
+  }
 `
 
 export default class Dropdown extends Component {
@@ -97,6 +117,7 @@ export default class Dropdown extends Component {
     }
     close = (): void => {
         this.list.style.height = getComputedStyle(this.list).height
+        // Force repaint
         this.list.offsetHeight
         this.list.style.height = '0px'
         this.setState({
@@ -108,6 +129,7 @@ export default class Dropdown extends Component {
         this.list.style.height = 'auto'
         const endHeight = getComputedStyle(this.list).height
         this.list.style.height = prevHeight
+        // Force repaint
         this.list.offsetHeight
         this.list.style.height = endHeight
         this.setState({
@@ -125,7 +147,6 @@ export default class Dropdown extends Component {
         }
     }
     handleDocumentClick = (e) => {
-
         const { changeDropdown, open } = this.props
         const el = this.menu
         const rect = el.getBoundingClientRect();
@@ -135,14 +156,11 @@ export default class Dropdown extends Component {
         const y = event.clientY;
         if (((x < minX || x >= minX + el.clientWidth) || (y < minY || y >= minY + el.clientHeight)) && open) {
             e.stopImmediatePropagation()
-            e.preventDefault()
+            // e.preventDefault()
             this.close()
             changeDropdown(-1)
             return
         }
-        // console.log(open ? 'opened' : 'closed')
-
-        // this.close()
     }
     renderItems = () => {
         let { items } = this.props

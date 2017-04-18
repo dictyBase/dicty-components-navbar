@@ -26,12 +26,14 @@ const Toggle = styled.li`
 
   @media (max-width: 768px) {
     position: relative;
+    margin: 0;
+    padding: 10px 20px 10px 10px;
   }
 
   &::after {
     content: '';
     position: absolute;
-    top: ${ props => props.open ? '9px' : 0 };
+    top: ${ props => props.open ? '9px' : '0px' };
     bottom: 0;
     right: 5px;
     margin: auto;

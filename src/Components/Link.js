@@ -3,13 +3,13 @@ import styled from 'styled-components'
 
 const ListItem = styled.li`
   display: flex;
-  padding: 10px;
 `
 const A = styled.a`
   display: block;
   color: ${ props => props.theme.textColor ? props.theme.textColor : 'white' };
   text-decoration: none;
   margin: auto;
+  padding: 10px;
 `
 
 export default class Link extends Component {

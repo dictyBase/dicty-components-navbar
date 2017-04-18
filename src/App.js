@@ -67,11 +67,22 @@ const brand = {
     title: 'Brand',
     href: 'google.com'
 }
-const theme = {}
+// Primary: Nav background,
+// Secondary: Borders, highlights, dropdowns
+// primaryText: all on the primary background,
+// secondaryText: all text on the secondary color
+
+const theme = {
+    primary: '#3AAED8',
+    secondary: '#2BD9FE',
+    text: 'white'
+}
 export default class App extends Component {
     render() {
         return (
-            <Navbar theme={ theme } brand={ brand } items={ items } />
+            <div>
+              <Navbar theme={ theme } brand={ brand } items={ items } />
+            </div>
         )
     }
 }

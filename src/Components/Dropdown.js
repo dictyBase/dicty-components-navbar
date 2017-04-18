@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-// import { darken } from 'polished'
+import { darken } from 'polished'
 
 const Menu = styled.ul`
   display: flex;
@@ -10,7 +10,7 @@ const Menu = styled.ul`
   justify-content: center;
   padding: 0;
   position: relative;
-  background: ${ props => props.open ? '#333' : 'transparent' };
+  background: ${ props => props.open && props.theme.secondary ? props.theme.secondary : 'transparent' };
   transition: all 0.2s ease;
 
   @media (max-width: 768px) {
@@ -39,7 +39,7 @@ const Toggle = styled.li`
     height: 0;
     border-left: 5px solid transparent;
     border-right: 5px solid transparent;
-    border-top: 5px solid ${ props => props.theme.textColor ? props.theme.textColor : 'white' };
+    border-top: 5px solid ${ props => props.theme.text ? props.theme.text : 'white' };
     transform: ${ props => props.open ? 'rotateX(180deg)' : 'rotateX(0deg)' };
     transform-origin: top;
     transition: inherit;
@@ -57,15 +57,15 @@ const List = styled.ul`
   left: 0;
   display: flex;
   flex-direction: column;
-  padding: ${ props => props.open ? '0px 0px 5px 0px' : '0px' };
+  padding: 0px;
   height: 0px;
   width: calc(100% - 2px);
   overflow: hidden;
   list-style-type: none;
   transition: all 0.2s ease;
-  border-left: 1px solid ${ props => props.theme.borderColor ? props.theme.borderColor : '#333' };
-  border-right: 1px solid ${ props => props.theme.borderColor ? props.theme.borderColor : '#333' };
-  border-bottom: 1px solid ${ props => props.theme.borderColor ? props.theme.borderColor : '#333' };
+  border-left: 1px solid ${ props => props.theme.secondary ? props.theme.secondary : '#333' };
+  border-right: 1px solid ${ props => props.theme.secondary ? props.theme.secondary : '#333' };
+  border-bottom: 1px solid ${ props => props.theme.secondary ? props.theme.secondary : '#333' };
   border-bottom-width: ${ props => props.open ? '1px' : '0px' };
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
@@ -81,13 +81,13 @@ const List = styled.ul`
 `
 const Item = styled.li`
   position: relative;
-  color: black;
+  color: ${ props => props.theme.primary ? props.theme.primary : 'black' };
   background-size: 0px 0px;
   transition: all 0.14s ease;
 
   &:hover {
     color: white;
-    background: black;
+    background: ${ props => props.theme.secondary ? darken(0.2, props.theme.secondary) : 'black' };
   }
 
   @media (max-width: 768px) {
@@ -149,11 +149,11 @@ export default class Dropdown extends Component {
     handleDocumentClick = (e) => {
         const { changeDropdown, open } = this.props
         const el = this.menu
-        const rect = el.getBoundingClientRect();
-        const minX = rect.left + el.clientLeft;
-        const x = event.clientX;
-        const minY = rect.top + el.clientTop;
-        const y = event.clientY;
+        const rect = el.getBoundingClientRect()
+        const minX = rect.left + el.clientLeft
+        const x = event.clientX
+        const minY = rect.top + el.clientTop
+        const y = event.clientY
         if (((x < minX || x >= minX + el.clientWidth) || (y < minY || y >= minY + el.clientHeight)) && open) {
             e.stopImmediatePropagation()
             // e.preventDefault()

@@ -70,6 +70,7 @@ const Header = styled.li`
     z-index: 10;
   }
 `
+
 export default class Navbar extends Component {
     constructor() {
         super()
@@ -83,14 +84,14 @@ export default class Navbar extends Component {
     }
     handleDocumentClick = (e) => {
         const { open } = this.state
-        if ((!wasClicked(e, this.nav) && !wasClicked(e, this.icon)) && open) {
+        if (!wasClicked(e, this.nav) && open) {
             this.close()
         }
     }
     toggle = (e) => {
         const { open } = this.state
         // console.log(e)
-        // e.stopPropagation()
+        e.nativeEvent.stopImmediatePropagation()
         e.preventDefault()
         if (open) {
             this.close()
@@ -122,7 +123,9 @@ export default class Navbar extends Component {
         const { activeIndex } = this.state
         let { items } = this.props
         items = items.map((item, i) => {
-            if (item.dropdown) {
+            if (item.element) {
+                return item.element
+            } else if (item.dropdown) {
                 return (
                     <Dropdown
                       key={ i }
@@ -151,7 +154,7 @@ export default class Navbar extends Component {
                 <Nav open={ open } innerRef={ el => this.nav = el }>
                   <Header open={ open }>
                     { brand && this.renderBrand() }
-                    <MenuIcon innerRef={ el => this.icon = el } onClick={ this.toggle } open={ open } />
+                    <MenuIcon ref={ el => this.icon = el } onClick={ this.toggle } open={ open } />
                   </Header>
                   { this.renderItems() }
                 </Nav>

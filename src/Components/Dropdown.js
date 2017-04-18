@@ -6,8 +6,8 @@ const Menu = styled.ul`
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
-  ${''/* margin: auto; */}
   justify-content: center;
+  height: 100%;
   padding: 0;
   position: relative;
   background: ${ props => props.open && props.theme.secondary ? props.theme.secondary : 'transparent' };

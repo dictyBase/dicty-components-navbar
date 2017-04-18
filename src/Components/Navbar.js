@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+ import React, { Component } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import Brand from './Brand'
 import Dropdown from './Dropdown'
@@ -7,11 +7,15 @@ import MenuIcon from './MenuIcon'
 import { wasClicked } from '../utils/wasClicked'
 
 const Container = styled.div`
-
   @media (max-width: 768px) {
     overflow-y: auto;
     position: fixed;
     height: 100vh;
+    -ms-overflow-style: none;
+    overflow: -moz-scrollbars-none;
+    &::-webkit-scrollbar {
+      width: 0 !important;
+    }
   }
 `
 const Nav = styled.nav`
@@ -25,7 +29,6 @@ const Nav = styled.nav`
 
   @media (max-width: 768px) {
     position: relative;
-    overflow-y: scroll;
     flex-direction: column;
     align-items: flex-start;
     min-width: 200px;
@@ -39,6 +42,7 @@ const Items = styled.ul`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  align-items: center;
   margin: 0;
   padding: 0;
   list-style-type: none;

@@ -1,4 +1,4 @@
- import React, { Component } from 'react'
+import React, { Component } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import Brand from './Brand'
 import Dropdown from './Dropdown'
@@ -90,7 +90,6 @@ export default class Navbar extends Component {
     }
     toggle = (e) => {
         const { open } = this.state
-        // console.log(e)
         e.nativeEvent.stopImmediatePropagation()
         e.preventDefault()
         if (open) {

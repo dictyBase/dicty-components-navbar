@@ -14,23 +14,20 @@ const Link = styled.a`
   display: block;
   margin: auto;
   text-decoration: none;
-  color: ${ props => props.theme.textColor ? props.theme.textColor : 'white' };
+  color: ${ props => props.theme.text ? props.theme.text : 'white' };
   font-size: 1.5em;
 
   @media (max-width: 768px) {
-    ${''/* position: fixed; */}
     top: 0;
-    ${''/* left: ${ props => props.open ? '30px' : '-100%'}; */}
     z-index: 10;
-    ${''/* padding: 10px; */}
   }
 `
 export default class Brand extends Component {
     render() {
-        const { title, href, open } = this.props
+        const { title, href } = this.props
         return (
             <Container>
-              <Link open={ open } href={ href }>{ title }</Link>
+              <Link href={ href }>{ title }</Link>
             </Container>
         )
     }

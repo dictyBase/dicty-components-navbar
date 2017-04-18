@@ -72,16 +72,21 @@ const brand = {
 // primaryText: all on the primary background,
 // secondaryText: all text on the secondary color
 
-const theme = {
+const theme1 = {
     primary: '#3AAED8',
     secondary: '#2BD9FE',
+    text: 'white'
+}
+const theme2 = {
+    primary: '#6E2594',
+    secondary: '#05668D',
     text: 'white'
 }
 export default class App extends Component {
     render() {
         return (
             <div>
-              <Navbar theme={ theme } brand={ brand } items={ items } />
+              <Navbar theme={ theme1 } brand={ brand } items={ items } />
             </div>
         )
     }

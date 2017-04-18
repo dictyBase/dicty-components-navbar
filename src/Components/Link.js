@@ -10,12 +10,12 @@ const ListItem = styled.li`
 `
 const A = styled.a`
   display: block;
-  color: ${ props => props.theme.textColor ? props.theme.textColor : 'white' };
+  color: ${ props => props.theme.text ? props.theme.text : 'white' };
   text-decoration: none;
   margin: auto;
   padding: 10px;
   height: 100%;
-  
+
   @media (max-width: 768px) {
     width: 100%;
   }

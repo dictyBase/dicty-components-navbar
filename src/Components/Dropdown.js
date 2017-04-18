@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { darken } from 'polished'
+import { darkenOrLighten } from '../utils/darkenOrLighten'
 
 const Menu = styled.ul`
   display: flex;
@@ -10,7 +10,7 @@ const Menu = styled.ul`
   height: 100%;
   padding: 0;
   position: relative;
-  background: ${ props => props.open && props.theme.secondary ? props.theme.secondary : 'transparent' };
+  background: ${ props => props.open && props.theme.secondary ? darkenOrLighten(props.theme.secondary) : 'transparent' };
   transition: all 0.2s ease;
 
   @media (max-width: 768px) {
@@ -23,6 +23,7 @@ const Toggle = styled.li`
   margin-top: 10px;
   padding: 0px 20px 10px 10px;
   transition: all 0.3s ease;
+  color: ${ props => props.theme.text ? props.theme.text : 'black' };
 
   @media (max-width: 768px) {
     position: relative;
@@ -84,12 +85,12 @@ const List = styled.ul`
 const Item = styled.li`
   position: relative;
   color: ${ props => props.theme.primary ? props.theme.primary : 'black' };
-  background-size: 0px 0px;
+  ${''/* background-size: 0px 0px; */}
   transition: all 0.14s ease;
 
   &:hover {
     color: white;
-    background: ${ props => props.theme.secondary ? darken(0.2, props.theme.secondary) : 'black' };
+    background: ${ props => props.theme.secondary ? darkenOrLighten(props.theme.secondary) : 'black' };
   }
 
   @media (max-width: 768px) {
@@ -108,12 +109,6 @@ const Link = styled.a`
 `
 
 export default class Dropdown extends Component {
-    constructor() {
-        super()
-        this.state = {
-            open: false
-        }
-    }
     componentWillMount() {
         document.addEventListener('click', this.handleDocumentClick)
     }
@@ -122,9 +117,6 @@ export default class Dropdown extends Component {
         // Force repaint
         this.list.offsetHeight
         this.list.style.height = '0px'
-        this.setState({
-            open: false
-        })
     }
     open = (): void => {
         const prevHeight = this.list.style.height
@@ -134,9 +126,6 @@ export default class Dropdown extends Component {
         // Force repaint
         this.list.offsetHeight
         this.list.style.height = endHeight
-        this.setState({
-            open: true
-        })
     }
     handleClick = (e) => {
         const { open, changeDropdown, index } = this.props

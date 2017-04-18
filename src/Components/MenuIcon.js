@@ -47,7 +47,7 @@ export default class MenuIcon extends Component {
     render() {
       const { open, onClick } = this.props
       return (
-          <Toggle onClick={ onClick } open={ open }>
+          <Toggle role="button" onClick={ onClick } open={ open }>
             <IconBarTop open={ open } />
             <IconBarMiddle open={ open } />
             <IconBarBottom open={ open } />

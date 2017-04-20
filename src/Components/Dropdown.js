@@ -8,6 +8,7 @@ const Menu = styled.ul`
   flex-direction: column;
   flex-wrap: nowrap;
   justify-content: center;
+  align-items: center;
   height: 100%;
   padding: 0;
   position: relative;
@@ -15,18 +16,20 @@ const Menu = styled.ul`
   transition: all 0.2s ease;
 
   @media (max-width: 768px) {
+    align-items: initial;
     width: 100%;
   }
 `
 const Toggle = styled.li`
   display: block;
   cursor: pointer;
-  margin-top: 10px;
-  padding: 0px 20px 10px 10px;
+  padding: 0px 20px 0px 10px;
   transition: all 0.3s ease;
   color: ${ props => props.theme.text ? props.theme.text : 'black' };
+  line-height: ${ props => props.theme.height ? props.theme.height : '50px' };
 
   @media (max-width: 768px) {
+    line-height: initial;
     position: relative;
     margin: 0;
     padding: 10px 20px 10px 10px;

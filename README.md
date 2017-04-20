@@ -9,7 +9,13 @@ A responsive, themable Navbar component using React with [styled-components](htt
 
 ### Closed
 
-## Props
+## Components
+
+### Brand
+
+A large link displayed at the far left of the desktop view and the top left of the mobile view
+
+#### Props
 
 | Property | Type | Purpose |
 | -------- | ---- | ------- |

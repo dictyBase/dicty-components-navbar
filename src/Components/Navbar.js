@@ -72,6 +72,7 @@ const Header = styled.li`
 `
 
 export default class Navbar extends Component {
+    displayName = 'Navbar'
     constructor() {
         super()
         this.state = {
@@ -123,7 +124,7 @@ export default class Navbar extends Component {
         let { items } = this.props
         items = items.map((item, i) => {
             if (item.element) {
-                return item.element
+                return React.cloneElement(item.element, { ...item.element.props, key: i })
             } else if (item.dropdown) {
                 return (
                     <Dropdown
@@ -145,17 +146,17 @@ export default class Navbar extends Component {
         document.removeEventListener('click', this.handleDocumentClick)
     }
     render() {
-        const { theme, brand } = this.props
+        const { theme, brand, items } = this.props
         const { open } = this.state
         return (
-            <ThemeProvider theme={ theme }>
+            <ThemeProvider theme={ theme ? theme : {} }>
               <Container>
                 <Nav open={ open } innerRef={ el => this.nav = el }>
                   <Header open={ open }>
                     { brand && this.renderBrand() }
                     <MenuIcon ref={ el => this.icon = el } onClick={ this.toggle } open={ open } />
                   </Header>
-                  { this.renderItems() }
+                  { items && this.renderItems() }
                 </Nav>
               </Container>
             </ThemeProvider>

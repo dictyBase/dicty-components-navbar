@@ -23,6 +23,7 @@ const Link = styled.a`
   }
 `
 export default class Brand extends Component {
+    displayName = 'Brand'
     render() {
         const { title, href } = this.props
         return (

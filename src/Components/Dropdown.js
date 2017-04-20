@@ -109,6 +109,7 @@ const Link = styled.a`
 `
 
 export default class Dropdown extends Component {
+    displayName = 'Dropdown'
     componentWillMount() {
         document.addEventListener('click', this.handleDocumentClick)
     }

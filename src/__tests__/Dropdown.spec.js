@@ -61,6 +61,7 @@ describe('Dropdown', () => {
     })
     it('should call open() if the open prop changes to true', () => {
         wrapper.instance().open = jest.fn()
+        // Need to update wrapper for mock function to take effect
         wrapper.update()
         wrapper.setProps({ open: true })
         expect(wrapper.instance().open.mock.calls.length).toEqual(1)
@@ -71,5 +72,8 @@ describe('Dropdown', () => {
         wrapper.update()
         wrapper.setProps({ open: false })
         expect(wrapper.instance().close.mock.calls.length).toEqual(1)
+    })
+    it('renders the correct number of links', () => {
+        expect(wrapper.children().find('ul').children().length).toEqual(4)
     })
 })

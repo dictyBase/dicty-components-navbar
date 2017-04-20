@@ -22,6 +22,7 @@ const A = styled.a`
 `
 
 export default class Link extends Component {
+    displayName = 'Link'
     render() {
         const { title, href } = this.props
         return (

@@ -115,4 +115,9 @@ describe('Navbar', () => {
         wrapper.find(Dropdown).first().find('li').first().simulate('click')
         expect(wrapper.state('activeIndex')).toEqual(-1)
     })
+    it('should set its active index to -1 if it is closed', () => {
+        wrapper.setState({ activeIndex: 0, open: true })
+        wrapper.find(MenuIcon).simulate('click', nativeEvent)
+        expect(wrapper.state('activeIndex')).toEqual(-1)
+    })
 })

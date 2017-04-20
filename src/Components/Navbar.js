@@ -116,7 +116,8 @@ export default class Navbar extends Component {
     }
     close = () => {
         this.setState({
-            open: false
+            open: false,
+            activeIndex: -1
         })
     }
     open = () => {

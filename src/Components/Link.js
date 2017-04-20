@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
@@ -21,7 +22,13 @@ const A = styled.a`
   }
 `
 
+type Props = {
+    title: String,
+    href: String
+}
+
 export default class Link extends Component {
+    props: Props
     displayName = 'Link'
     render() {
         const { title, href } = this.props

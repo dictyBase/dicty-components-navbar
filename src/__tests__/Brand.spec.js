@@ -5,7 +5,6 @@ import Brand from '../Components/Brand'
 
 describe('Brand', () => {
 
-    const wrapper = mount(<Brand title="Test" href="google.com" />)
 
     it('should render without crashing', () => {
         const div = document.createElement('div')
@@ -13,10 +12,12 @@ describe('Brand', () => {
     })
 
     it('should render its title', () => {
+        const wrapper = mount(<Brand title="Test" href="google.com" />)
         expect(wrapper.text()).toEqual('Test')
     })
 
     it('should have the correct href', () => {
+        const wrapper = mount(<Brand title="Test" href="google.com" />)
         expect(wrapper.find('a').getDOMNode().getAttribute('href')).toEqual('google.com')
     })
 })

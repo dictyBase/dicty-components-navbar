@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { darkenOrLighten } from '../utils/darkenOrLighten'
+import { wasClicked } from '../utils/wasClicked'
 
 const Menu = styled.ul`
   display: flex;
@@ -48,6 +49,7 @@ const Toggle = styled.li`
     transition: inherit;
 
     @media (max-width: 768px) {
+      top: ${ props => props.open ? '19px' : '10px' };
       right: 25px;
       bottom: 10px;
       top: none;
@@ -108,8 +110,18 @@ const Link = styled.a`
   }
 `
 
+type Props = {
+    open: boolean,
+    changeDropdown: Function,
+    theme: Object,
+    title: String,
+    index: Number,
+}
+
 export default class Dropdown extends Component {
     displayName = 'Dropdown'
+    menu: any
+    list: any
     componentWillMount() {
         document.addEventListener('click', this.handleDocumentClick)
     }
@@ -128,7 +140,7 @@ export default class Dropdown extends Component {
         this.list.offsetHeight
         this.list.style.height = endHeight
     }
-    handleClick = (e) => {
+    handleClick = (e: Event): void => {
         const { open, changeDropdown, index } = this.props
         if (open) {
             // If dropdown is clicked while open, set Navbar's activeIndex to -1
@@ -138,23 +150,22 @@ export default class Dropdown extends Component {
             changeDropdown(index)
         }
     }
-    handleDocumentClick = (e) => {
+    handleDocumentClick = (e: Event): void => {
         const { changeDropdown, open } = this.props
-        const el = this.menu
-        const rect = el.getBoundingClientRect()
-        const minX = rect.left + el.clientLeft
-        const x = event.clientX
-        const minY = rect.top + el.clientTop
-        const y = event.clientY
-        if (((x < minX || x >= minX + el.clientWidth) || (y < minY || y >= minY + el.clientHeight)) && open) {
+        // const el = this.menu
+        // const rect = el.getBoundingClientRect()
+        // const minX = rect.left + el.clientLeft
+        // const x = event.clientX
+        // const minY = rect.top + el.clientTop
+        // const y = event.clientY
+        if (!wasClicked(e, this.menu) && open) {
             e.stopImmediatePropagation()
-            // e.preventDefault()
             this.close()
             changeDropdown(-1)
             return
         }
     }
-    renderItems = () => {
+    renderItems = (): ?React$Element<any> => {
         let { items } = this.props
         items = items.map((item, i) => {
             return (
@@ -165,8 +176,8 @@ export default class Dropdown extends Component {
         })
         return items
     }
-    componentWillReceiveProps(nextProps) {
-        const { open } = nextProps
+    componentWillReceiveProps(nextProps: Props) {
+        const { open }: { open: Boolean} = nextProps
         if (open) {
             this.open()
         } else if (!open) {

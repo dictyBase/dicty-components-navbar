@@ -1,3 +1,4 @@
+// @flow
 import React, { Component } from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import Brand from './Brand'
@@ -71,8 +72,22 @@ const Header = styled.li`
   }
 `
 
+type Props = {
+    items: Array<Object>,
+    brand: Object,
+    theme: Object
+}
+type State = {
+    activeIndex: number,
+    open: boolean
+}
+
 export default class Navbar extends Component {
     displayName = 'Navbar'
+    props: Props
+    state: State
+    nav: any
+    icon: any
     constructor() {
         super()
         this.state = {
@@ -83,13 +98,13 @@ export default class Navbar extends Component {
     componentDidMount() {
         document.addEventListener('click', this.handleDocumentClick)
     }
-    handleDocumentClick = (e) => {
+    handleDocumentClick = (e: MouseEvent) => {
         const { open } = this.state
         if (!wasClicked(e, this.nav) && open) {
             this.close()
         }
     }
-    toggle = (e) => {
+    toggle = (e: SyntheticEvent) => {
         const { open } = this.state
         e.nativeEvent.stopImmediatePropagation()
         e.preventDefault()
@@ -109,7 +124,7 @@ export default class Navbar extends Component {
             open: true
         })
     }
-    changeDropdown = (i) => {
+    changeDropdown = (i: number) => {
         this.setState({
             activeIndex: i
         })

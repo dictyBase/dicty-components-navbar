@@ -1,6 +1,7 @@
+// @flow
 import { parseToHsl, toColorString } from 'polished'
 
-export const darkenOrLighten = (color) => {
+export const darkenOrLighten = (color: String) => {
     const hsl = parseToHsl(color)
     if (hsl.lightness > 0.5) {
         hsl.lightness -= 0.1

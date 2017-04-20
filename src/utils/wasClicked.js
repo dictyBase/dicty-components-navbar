@@ -1,12 +1,13 @@
-export const wasClicked = (event, element) => {
-    var rect = element.getBoundingClientRect()
-    var minX = rect.left + element.clientLeft
-    var x = event.clientX
+// @flow
+export const wasClicked = (event: MouseEvent, element: any) => {
+    const rect: Object = element.getBoundingClientRect()
+    const minX: number = rect.left + element.clientLeft
+    const x: number = event.clientX
+    const minY: number = rect.top + element.clientTop
+    const y: number = event.clientY
     if (x < minX || x >= minX + element.clientWidth) {
         return false
     }
-    var minY = rect.top + element.clientTop
-    var y = event.clientY
     if (y < minY || y >= minY + element.clientHeight) {
         return false
     }

@@ -1,8 +1,9 @@
+// @flow
 import React, { Component } from 'react'
 import styled from 'styled-components'
 
 const Toggle = styled.div`
-  ${''/* display: none; */}
+  display: none;
   position: relative;
   padding: 5px;
   margin-top: 5px;
@@ -43,8 +44,15 @@ const IconBarBottom = styled.div`
   transition: all 0.2s ease;
   transform: ${ props => props.open ? 'rotate(45deg) translate(-25%, -6px)' : 'rotate(0deg) translate(0px, 0px)' };
 `
+
+type Props = {
+    onClick: Function,
+    open: boolean
+}
+
 export default class MenuIcon extends Component {
     displayName = 'Menu Icon'
+    props: Props
     render() {
       const { open, onClick } = this.props
       return (
@@ -54,6 +62,5 @@ export default class MenuIcon extends Component {
             <IconBarBottom open={ open } />
           </Toggle>
       )
-
     }
 }

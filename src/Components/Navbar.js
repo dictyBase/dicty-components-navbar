@@ -131,9 +131,8 @@ export default class Navbar extends Component {
         })
     }
     renderBrand = () => {
-        const { open } = this.state
         const { title, href } = this.props.brand
-        return <Brand open={ open } title={ title } href={ href } />
+        return <Brand title={ title } href={ href } />
     }
     renderItems = () => {
         const { activeIndex } = this.state
@@ -147,7 +146,7 @@ export default class Navbar extends Component {
                       key={ i }
                       index={ i }
                       open={ activeIndex === i ? true : false }
-                      items={ item.links }
+                      items={ item.items }
                       title={ item.title }
                       changeDropdown={ this.changeDropdown }
                     />

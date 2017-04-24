@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { darkenOrLighten } from '../utils/darkenOrLighten'
 import { wasClicked } from '../utils/wasClicked'
 
 const Menu = styled.ul`
@@ -12,7 +11,7 @@ const Menu = styled.ul`
   height: 100%;
   padding: 0;
   position: relative;
-  background: ${ props => props.open && props.theme.secondary ? darkenOrLighten(props.theme.secondary) : 'transparent' };
+  background: ${ props => props.open && props.theme.secondary ? props.theme.secondary : 'transparent' };
   transition: all 0.2s ease;
 
   @media (max-width: 768px) {
@@ -95,7 +94,7 @@ const Item = styled.li`
 
   &:hover {
     color: white;
-    background: ${ props => props.theme.secondary ? darkenOrLighten(props.theme.secondary) : 'black' };
+    background: ${ props => props.theme.secondary ? props.theme.secondary : 'black' };
   }
 
   @media (max-width: 768px) {
@@ -119,6 +118,7 @@ type Props = {
     theme: Object,
     title: String,
     index: Number,
+    items: Array<Object>
 }
 
 export default class Dropdown extends Component {

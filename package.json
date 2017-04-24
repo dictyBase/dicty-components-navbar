@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "devDependencies": {
+    "babel-cli": "^6.24.1",
     "babel-eslint": "^7.1.1",
     "enzyme": "^2.8.2",
     "eslint": "^3.16.1",
@@ -14,7 +15,8 @@
     "flow-bin": "^0.44.2",
     "react-addons-test-utils": "^15.5.1",
     "react-dom": "^15.5.4",
-    "react-scripts": "0.9.5"
+    "react-scripts": "0.9.5",
+    "webpack": "^2.4.1"
   },
   "dependencies": {
     "polished": "^1.0.2",
@@ -24,7 +26,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "babel src --out-dir lib",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "flow": "flow"

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import Navbar from './Components/Navbar'
+import ReactDOM from 'react-dom'
+import Navbar from '../src/Components/Navbar'
 
 const items = [
     {
@@ -91,3 +92,5 @@ export default class App extends Component {
         )
     }
 }
+
+ReactDOM.render(<App />, document.getElementById('root'))

@@ -1,6 +1,12 @@
 # Navbar Component
 A responsive, themable Navbar component using React with [styled-components](https://github.com/styled-components/styled-components).
 
+## Demo
+
+```bash
+npm run demo
+```
+
 ## Desktop
 
 ## Mobile
@@ -31,14 +37,14 @@ const items = [
         items: [
             {
                 name: 'Dropdown 1',
-                href: 'google.com'
+                href: 'http://www.google.com'
             }
         ]
     },
     {
         // For a normal nav link
         title: 'Link 1',
-        href: 'google.com'
+        href: 'http://www.google.com'
     },
     {
         // Or any element you want!
@@ -107,6 +113,7 @@ Note: This component adds an event listener to the document object to detect cli
 | Property | Type   | Purpose                                                                                          |
 | -------- | ------ | ------------------------------------------------------------------------------------------------ |
 | brand    | object | An object of the form {title: string, href: string}. Maps to the props of the `Brand` component. |
+| items    | array  | An array of objects which determines the nav items. See the usage example for options.           |
 
 ## Theming
 
@@ -117,7 +124,6 @@ These components expose a few themable properties, listed below. If you are usin
 | primary       | string | An RGB, hex, or CSS color string that will be the background color for the `Navbar`.                                             |
 | secondary     | string | An RGB, hex, or CSS color string that will be the background color for hovered links, active `Dropdown`'s, `Dropdown` borders, and the text color for non-hovered `Dropdown` links. |
 | text          | string | An RGB, hex, or CSS color string that will be the primary text color for the `Navbar`.                                           |
-<!-- | secondaryText | string | An RGB, hex, or CSS color string that will be the color for links in open `Dropdown`s that are not hovered.                      | -->
 
 ## Utility Functions
 

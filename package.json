@@ -34,6 +34,7 @@
     "build": "babel src --out-dir lib",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "flow": "flow"
+    "flow": "flow",
+    "demo": "webpack-dev-server --content-base ./examples --config ./examples/webpack.config.js"
   }
 }

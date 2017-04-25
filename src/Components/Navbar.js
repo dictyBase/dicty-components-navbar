@@ -8,10 +8,13 @@ import MenuIcon from './MenuIcon'
 import { wasClicked } from '../utils/wasClicked'
 
 const Container = styled.div`
+  width: 100%;
+
   @media (max-width: 768px) {
-    overflow-y: auto;
-    position: fixed;
-    height: 100vh;
+    overflow-y: hidden;
+    position: ${ props => props.open ? 'fixed' : 'initial' };
+    height: ${ props => props.open ? 50 + (39 * props.items.length + (props.brand ? 50 : 0)) + 'px' : '50px' };
+    transition: height 0.3s ease;
     -ms-overflow-style: none;
     overflow: -moz-scrollbars-none;
     &::-webkit-scrollbar {
@@ -27,15 +30,14 @@ const Nav = styled.nav`
   color: ${ props => props.theme.text ? props.theme.text : 'white' };
   min-height: ${ props => props.theme.height ? props.theme.height + 'px' : '50px' };
 
-
   @media (max-width: 768px) {
     position: relative;
     flex-direction: column;
     align-items: flex-start;
     min-width: 200px;
     min-height: 100%;
-    left: ${ props => props.open ? '0%' : '-100%' };
-    transition: left 0.4s ease;
+    ${''/* left: ${ props => props.open ? '0%' : '-100%' }; */}
+    ${''/* transition: left 0.4s ease; */}
     ${''/* padding-top: 30px; */}
   }
 `
@@ -53,21 +55,23 @@ const Items = styled.ul`
     align-items: center;
     align-items: flex-start;
     width: 100%;
-    margin-top: 60px;
+    ${''/* margin-top: 60px; */}
   }
 `
 const Header = styled.li`
   list-style-type: none;
 
   @media (max-width: 768px) {
-    position: fixed;
+    ${''/* position: fixed; */}
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: ${ props => props.theme.primary ? props.theme.primary : 'black' };
+    flex-direction: column;
+    align-items: flex-start;
+    ${''/* justify-content: space-between; */}
+    ${''/* align-items: center; */}
+    ${''/* background: ${ props => props.theme.primary ? props.theme.primary : 'black' }; */}
     width: ${ props => props.maxWidth ? props.maxWidth + 'px' : '200px' };
-    left: ${ props => props.open ? '0%' : '-200px' };
-    transition: left 0.4s ease;
+    ${''/* left: ${ props => props.open ? '0%' : '-200px' }; */}
+    ${''/* transition: left 0.4s ease; */}
     z-index: 10;
   }
 `
@@ -135,7 +139,7 @@ export default class Navbar extends Component {
         return <Brand title={ title } href={ href } />
     }
     renderItems = () => {
-        const { activeIndex } = this.state
+        const { activeIndex, open } = this.state
         let { items } = this.props
         items = items.map((item, i) => {
             if (item.element) {
@@ -149,13 +153,14 @@ export default class Navbar extends Component {
                       items={ item.items }
                       title={ item.title }
                       changeDropdown={ this.changeDropdown }
+                      controlled={ true }
                     />
                 )
             } else {
                 return <Link key={ i } href={ item.href } title={ item.title } />
             }
         })
-        return <Items>{ items }</Items>
+        return <Items open={ open }>{ items }</Items>
     }
     componentWillUnmount() {
         document.removeEventListener('click', this.handleDocumentClick)
@@ -165,11 +170,11 @@ export default class Navbar extends Component {
         const { open } = this.state
         return (
             <ThemeProvider theme={ theme ? theme : {} }>
-              <Container>
+              <Container open={ open } items={ items } brand={ brand }>
                 <Nav open={ open } innerRef={ el => this.nav = el }>
                   <Header open={ open }>
-                    { brand && this.renderBrand() }
                     <MenuIcon ref={ el => this.icon = el } onClick={ this.toggle } open={ open } />
+                    { brand && this.renderBrand() }
                   </Header>
                   { items && this.renderItems() }
                 </Nav>

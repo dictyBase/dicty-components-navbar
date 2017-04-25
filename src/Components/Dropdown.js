@@ -155,12 +155,6 @@ export default class Dropdown extends Component {
     }
     handleDocumentClick = (e: Event): void => {
         const { changeDropdown, open } = this.props
-        // const el = this.menu
-        // const rect = el.getBoundingClientRect()
-        // const minX = rect.left + el.clientLeft
-        // const x = event.clientX
-        // const minY = rect.top + el.clientTop
-        // const y = event.clientY
         if (!wasClicked(e, this.menu) && open) {
             e.stopImmediatePropagation()
             this.close()
@@ -193,14 +187,14 @@ export default class Dropdown extends Component {
     render() {
         const { title, open } = this.props
         return (
-          <Menu open={ open } innerRef={ el => this.menu = el }>
-            <Toggle onClick={ this.handleClick } open={ open }>
-              { title }
-            </Toggle>
-            <List open={ open } innerRef={ el => this.list = el }>
-              { this.renderItems() }
-            </List>
-          </Menu>
+            <Menu open={ open } innerRef={ el => this.menu = el }>
+              <Toggle onClick={ this.handleClick } open={ open }>
+                { title }
+              </Toggle>
+              <List open={ open } innerRef={ el => this.list = el }>
+                { this.renderItems() }
+              </List>
+            </Menu>
         )
     }
 }

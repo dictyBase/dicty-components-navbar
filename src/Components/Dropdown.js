@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { wasClicked } from '../utils/wasClicked'
+import { wasClicked, transitionToAuto, transitionFromAuto } from '../utils/dom'
 
 const Menu = styled.ul`
   display: flex;
@@ -129,19 +129,10 @@ export default class Dropdown extends Component {
         document.addEventListener('click', this.handleDocumentClick)
     }
     close = (): void => {
-        this.list.style.height = getComputedStyle(this.list).height
-        // Force repaint
-        this.list.offsetHeight
-        this.list.style.height = '0px'
+        transitionFromAuto(this.list, 0)
     }
     open = (): void => {
-        const prevHeight = this.list.style.height
-        this.list.style.height = 'auto'
-        const endHeight = getComputedStyle(this.list).height
-        this.list.style.height = prevHeight
-        // Force repaint
-        this.list.offsetHeight
-        this.list.style.height = endHeight
+        transitionToAuto(this.list)
     }
     handleClick = (e: Event): void => {
         const { open, changeDropdown, index } = this.props

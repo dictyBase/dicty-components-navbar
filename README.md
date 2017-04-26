@@ -22,7 +22,7 @@ The top level `Navbar` component will take care of rendering all of the sub-comp
 ```js
 const brand = {
     title: "Hello",
-    href: "google.com"
+    href: "http://www.google.com"
 }
 ```
 
@@ -48,6 +48,7 @@ const items = [
     },
     {
         // Or any element you want!
+        // Custom elements will be flex children of navbar, laid out in a row for desktop and a column for mobile
         element: <div className="custom">custom</div>
     }
 ]

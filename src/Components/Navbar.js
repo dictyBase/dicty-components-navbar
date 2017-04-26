@@ -5,15 +5,17 @@ import Brand from './Brand'
 import Dropdown from './Dropdown'
 import Link from './Link'
 import MenuIcon from './MenuIcon'
-import { wasClicked } from '../utils/wasClicked'
+import { transitionToAuto, transitionFromAuto, wasClicked, calcTextWidth } from '../utils/dom'
 
 const Container = styled.div`
   width: 100%;
 
   @media (max-width: 768px) {
-    overflow-y: hidden;
+    ${''/* overflow-y: ${ props => props.open ? 'hidden' : 'visible' }; */}
+    overflow: hidden;
     position: ${ props => props.open ? 'fixed' : 'initial' };
-    height: ${ props => props.open ? 50 + (39 * props.items.length + (props.brand ? 50 : 0)) + 'px' : '50px' };
+    ${''/* height: ${ props => props.open ? 'auto' : '50px' }; */}
+    height: 50px;
     transition: height 0.3s ease;
     -ms-overflow-style: none;
     overflow: -moz-scrollbars-none;
@@ -36,9 +38,6 @@ const Nav = styled.nav`
     align-items: flex-start;
     min-width: 200px;
     min-height: 100%;
-    ${''/* left: ${ props => props.open ? '0%' : '-100%' }; */}
-    ${''/* transition: left 0.4s ease; */}
-    ${''/* padding-top: 30px; */}
   }
 `
 const Items = styled.ul`
@@ -55,23 +54,16 @@ const Items = styled.ul`
     align-items: center;
     align-items: flex-start;
     width: 100%;
-    ${''/* margin-top: 60px; */}
   }
 `
 const Header = styled.li`
   list-style-type: none;
 
   @media (max-width: 768px) {
-    ${''/* position: fixed; */}
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    ${''/* justify-content: space-between; */}
-    ${''/* align-items: center; */}
-    ${''/* background: ${ props => props.theme.primary ? props.theme.primary : 'black' }; */}
     width: ${ props => props.maxWidth ? props.maxWidth + 'px' : '200px' };
-    ${''/* left: ${ props => props.open ? '0%' : '-200px' }; */}
-    ${''/* transition: left 0.4s ease; */}
     z-index: 10;
   }
 `
@@ -101,12 +93,28 @@ export default class Navbar extends Component {
     }
     componentDidMount() {
         document.addEventListener('click', this.handleDocumentClick)
+        // Necessary to allow container to expand to accomodate open dropdowns
+        this.container.addEventListener('transitionend', this.handleTransitionend)
+        this.calcBreakpoint()
+    }
+    handleTransitionend = (e) => {
+        const { open } = this.state
+        if (open && e.propertyName === 'height') {
+            this.container.style.height = 'auto'
+        }
     }
     handleDocumentClick = (e: MouseEvent) => {
         const { open } = this.state
         if (!wasClicked(e, this.nav) && open) {
             this.close()
         }
+    }
+    calcBreakpoint = () => {
+        const { items } = this.props
+        const text = items.reduce((acc, curr) => {
+            return acc + curr
+        })
+        console.log(calcTextWidth(text, undefined, 'Roboto sans-serif'))
     }
     toggle = (e: SyntheticEvent) => {
         const { open } = this.state
@@ -123,11 +131,13 @@ export default class Navbar extends Component {
             open: false,
             activeIndex: -1
         })
+        transitionFromAuto(this.container, 50)
     }
     open = () => {
         this.setState({
             open: true
         })
+        transitionToAuto(this.container)
     }
     changeDropdown = (i: number) => {
         this.setState({
@@ -164,13 +174,14 @@ export default class Navbar extends Component {
     }
     componentWillUnmount() {
         document.removeEventListener('click', this.handleDocumentClick)
+        this.container.removeEventListener('transitionend', this.handleTransitionend)
     }
     render() {
         const { theme, brand, items } = this.props
         const { open } = this.state
         return (
             <ThemeProvider theme={ theme ? theme : {} }>
-              <Container open={ open } items={ items } brand={ brand }>
+              <Container open={ open } items={ items } brand={ brand } innerRef={ el => this.container = el}>
                 <Nav open={ open } innerRef={ el => this.nav = el }>
                   <Header open={ open }>
                     <MenuIcon ref={ el => this.icon = el } onClick={ this.toggle } open={ open } />

@@ -6,7 +6,7 @@ const Toggle = styled.div`
   display: none;
   position: relative;
   padding: 5px;
-  margin-top: 5px;
+  margin: 5px 0px;
   flex-direction: column;
   justify-content: center;
   ${''/* position: fixed; */}

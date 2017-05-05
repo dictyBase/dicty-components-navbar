@@ -25,21 +25,21 @@ const Toggle = styled.div`
 `
 const IconBarTop = styled.div`
   height: 5px;
-  background: ${ props => props.theme.text };
+  background: ${ props => props.theme.text ? props.theme.text : 'white' };
   margin: 3px 0px;
   transition: all 0.2s ease;
   transform: ${ props => props.open ? 'rotate(-45deg) translate(-25%, 7px)' : 'rotate(0deg) translate(0px, 0px)' };
 `
 const IconBarMiddle = styled.div`
   height: 5px;
-  background: ${ props => props.theme.text };
+  background: ${ props => props.theme.text ? props.theme.text : 'white' };
   margin: 3px 0px;
   transition: all 0.1s ease;
   width: ${ props => props.open ? '0%' : '100%' };
 `
 const IconBarBottom = styled.div`
   height: 5px;
-  background: ${ props => props.theme.text };
+  background: ${ props => props.theme.text ? props.theme.text : 'white' };
   margin: 3px 0px;
   transition: all 0.2s ease;
   transform: ${ props => props.open ? 'rotate(45deg) translate(-25%, -6px)' : 'rotate(0deg) translate(0px, 0px)' };

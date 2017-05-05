@@ -64,6 +64,7 @@ const items = [
         href: 'http://www.google.com'
     }
 ]
+// eslint-disable-next-line
 const brand = {
     title: 'Brand',
     href: 'http://www.google.com'
@@ -78,6 +79,7 @@ const theme1 = {
     secondary: '#2BD9FE',
     text: 'white'
 }
+// eslint-disable-next-line
 const theme2 = {
     primary: '#6E2594',
     secondary: '#05668D',

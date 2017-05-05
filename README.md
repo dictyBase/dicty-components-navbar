@@ -95,7 +95,7 @@ A link in the Navbar.
 
 ### MenuIcon
 
-A menu icon that consists of three horizontal bars. Used to toggle the dropdown in the  mobile view.
+A menu icon that consists of three horizontal bars. Tansforms into an 'X' when the `open` prop is `true`. Used to toggle the `Navbar` dropdown in the mobile view.
 
 #### Props
 

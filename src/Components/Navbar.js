@@ -9,11 +9,12 @@ import { transitionToAuto, transitionFromAuto, wasClicked, calcTextWidth } from 
 
 const Container = styled.div`
   width: 100%;
+  z-index: 10000;
 
   @media (max-width: 768px) {
     ${''/* overflow-y: ${ props => props.open ? 'hidden' : 'visible' }; */}
     overflow: hidden;
-    position: ${ props => props.open ? 'fixed' : 'initial' };
+    position: initial;
     ${''/* height: ${ props => props.open ? 'auto' : '50px' }; */}
     height: 50px;
     transition: height 0.3s ease;
@@ -28,7 +29,7 @@ const Nav = styled.nav`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
-  background: ${ props => props.theme.primary ? props.theme.primary : 'black' };
+  background: ${ props => props.theme.primary ? props.theme.primary : '#15317e' };
   color: ${ props => props.theme.text ? props.theme.text : 'white' };
   min-height: ${ props => props.theme.height ? props.theme.height + 'px' : '50px' };
 
@@ -110,11 +111,28 @@ export default class Navbar extends Component {
         }
     }
     calcBreakpoint = () => {
-        const { items } = this.props
-        const text = items.reduce((acc, curr) => {
-            return acc + curr
-        })
-        console.log(calcTextWidth(text, undefined, 'Roboto sans-serif'))
+        // const { items } = this.props
+        // const text = items.reduce((acc, curr) => {
+        //     console.log(acc)
+        //     return acc + curr.title
+        // })
+        // const padding = items.reduce((acc, curr) => {
+        //     // console.log(acc)
+        //     if (curr.dropdown) {
+        //         return acc + 30
+        //     } else {
+        //         return acc + 20
+        //     }
+        // })
+        // let text = ''
+        // for (let i = 0; i < items.length; i++) {
+        //     let item = items[i]
+        //     if (!item.element) {
+        //         text += item.title
+        //     }
+        // }
+        // const textWidth = calcTextWidth(text, '16px', 'Roboto sans-serif')
+        // console.log(textWidth + padding)
     }
     toggle = (e: SyntheticEvent) => {
         const { open } = this.state

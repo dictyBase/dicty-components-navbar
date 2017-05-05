@@ -24,7 +24,7 @@ const Toggle = styled.li`
   cursor: pointer;
   padding: 0px 20px 0px 10px;
   transition: all 0.3s ease;
-  color: ${ props => props.theme.text ? props.theme.text : 'black' };
+  color: ${ props => props.theme.text ? props.theme.text : 'white' };
   line-height: ${ props => props.theme.height ? props.theme.height : '50px' };
 
   @media (max-width: 768px) {
@@ -51,9 +51,9 @@ const Toggle = styled.li`
     transition: inherit;
 
     @media (max-width: 768px) {
-      top: ${ props => props.open ? '19px' : '10px' };
+      top: ${ props => props.open ? '19px' : '11px' };
       right: 25px;
-      bottom: 10px;
+      bottom: ${ props => props.open ? '11px' : '10px' };
       top: none;
     }
   }
@@ -70,6 +70,7 @@ const List = styled.ul`
   overflow: hidden;
   list-style-type: none;
   transition: all 0.2s ease;
+  background: white;
   border-left: 1px solid ${ props => props.theme.secondary ? props.theme.secondary : '#333' };
   border-right: 1px solid ${ props => props.theme.secondary ? props.theme.secondary : '#333' };
   border-bottom: 1px solid ${ props => props.theme.secondary ? props.theme.secondary : '#333' };
@@ -77,13 +78,15 @@ const List = styled.ul`
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+  z-index: 10000;
 
   @media (max-width: 768px) {
     position: relative;
     top: 0;
     border: none;
-    color: white;
+    color: ${ props => props.theme.secondary ? props.theme.secondary : 'black' };
     box-shadow: none;
+    background: ${ props => props.theme.primary ? props.theme.primary : '#15317e' };
   }
 `
 const Item = styled.li`
@@ -94,7 +97,7 @@ const Item = styled.li`
 
   &:hover {
     color: white;
-    background: ${ props => props.theme.secondary ? props.theme.secondary : 'black' };
+    background: ${ props => props.theme.secondary ? props.theme.secondary : '#15317e' };
   }
 
   @media (max-width: 768px) {
@@ -108,7 +111,7 @@ const Link = styled.a`
   display: block;
 
   @media (max-width: 768px) {
-    padding: 10px 0px 10px 20px;
+    padding: 10px 0px 10px 40px;
   }
 `
 

@@ -5,7 +5,7 @@ import Brand from './Brand'
 import Dropdown from './Dropdown'
 import Link from './Link'
 import MenuIcon from './MenuIcon'
-import { transitionToAuto, transitionFromAuto, wasClicked, calcTextWidth } from '../utils/dom'
+import { transitionToAuto, transitionFromAuto, wasClicked } from '../utils/dom'
 
 const Container = styled.div`
   width: 100%;

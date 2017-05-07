@@ -14,7 +14,7 @@ describe('Navbar', () => {
             {
                 dropdown: true,
                 title: 'Dropdown 1',
-                links: [
+                items: [
                     {
                         name: 'Link 1',
                         href: 'www.google.com'
@@ -28,7 +28,7 @@ describe('Navbar', () => {
             {
                 dropdown: true,
                 title: 'Dicty Stock Center',
-                links: [
+                items: [
                     {
                         name: 'Link 1',
                         href: 'www.google.com'

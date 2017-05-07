@@ -9,11 +9,11 @@ npm run demo
 
 ## Desktop
 
+<img src="https://cloud.githubusercontent.com/assets/20975270/25785803/b6720fee-334e-11e7-90b0-ae5774380fe2.gif" />
+
 ## Mobile
 
-### Open
-
-### Closed
+<img src="https://cloud.githubusercontent.com/assets/20975270/25785965/1587af36-3352-11e7-92cd-cb9f1973a9b1.gif" />
 
 ## Usage
 

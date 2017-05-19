@@ -7,6 +7,13 @@ A responsive, themable Navbar component using React with [styled-components](htt
 npm run demo
 ```
 
+## Build
+
+```bash
+# builds files in the src directory to the lib directory using babel
+npm run build
+```
+
 ## Desktop
 
 <img src="https://cloud.githubusercontent.com/assets/20975270/25785803/b6720fee-334e-11e7-90b0-ae5774380fe2.gif" />

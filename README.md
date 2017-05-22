@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/dictyBase/dicty-components-navbar.svg?branch=master)](https://travis-ci.org/dictyBase/dicty-components-navbar)
+[![Dependency Status](https://david-dm.org/dictybase/dicty-components-navbar.svg)](https://david-dm.org/dictybase/dicty-components-navbar)
+[![Dev Dependency Status](https://david-dm.org/dictybase/dicty-components-navbar/dev-status.svg)](https://david-dm.org/dictybase/dicty-components-navbar?type=dev)
+
 # Navbar Component
 A responsive, themable Navbar component using React with [styled-components](https://github.com/styled-components/styled-components).
 

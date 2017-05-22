@@ -63,9 +63,10 @@ const Header = styled.li`
   @media (max-width: 768px) {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    width: ${ props => props.maxWidth ? props.maxWidth + 'px' : '200px' };
+    align-items: center;
+    ${''/* width: ${ props => props.maxWidth ? props.maxWidth + 'px' : '200px' }; */}
     z-index: 10;
+    width: 100%;
   }
 `
 

@@ -23,7 +23,7 @@ const Toggle = styled.li`
   display: block;
   cursor: pointer;
   padding: 0px 20px 0px 10px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, top 0.3s ease, bottom 0.3s ease;
   color: ${ props => props.theme.text ? props.theme.text : 'white' };
   line-height: ${ props => props.theme.height ? props.theme.height : '50px' };
 

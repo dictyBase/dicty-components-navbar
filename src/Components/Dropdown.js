@@ -66,7 +66,8 @@ const List = styled.ul`
   flex-direction: column;
   padding: 0px;
   height: 0px;
-  width: calc(100% - 2px);
+  min-width: calc(100% - 2px);
+  width: auto;
   overflow: hidden;
   list-style-type: none;
   transition: all 0.2s ease;
@@ -79,6 +80,7 @@ const List = styled.ul`
   border-bottom-left-radius: 3px;
   box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
   z-index: 10000;
+  white-space: nowrap;
 
   @media (max-width: 768px) {
     position: relative;
@@ -107,7 +109,7 @@ const Item = styled.li`
 const Link = styled.a`
   text-decoration: none;
   color: inherit;
-  padding: 10px 0px 10px 5px;
+  padding: 10px 10px 10px 5px;
   display: block;
 
   @media (max-width: 768px) {
@@ -128,8 +130,19 @@ export default class Dropdown extends Component {
     displayName = 'Dropdown'
     menu: any
     list: any
+    constructor() {
+        super()
+        this.state = {
+            width: null
+        }
+    }
     componentWillMount() {
         document.addEventListener('click', this.handleDocumentClick)
+    }
+    componentDidMount() {
+        this.setState({
+            width: getComputedStyle(this.list).width
+        })
     }
     close = (): void => {
         transitionFromAuto(this.list, 0)
@@ -139,6 +152,7 @@ export default class Dropdown extends Component {
     }
     handleClick = (e: Event): void => {
         const { open, changeDropdown, index } = this.props
+        const { width } = this.state
         if (open) {
             // If dropdown is clicked while open, set Navbar's activeIndex to -1
             // to signify that all dropdowns are currently closed
@@ -180,9 +194,10 @@ export default class Dropdown extends Component {
     }
     render() {
         const { title, open } = this.props
+        const { width } = this.state
         return (
-            <Menu open={ open } innerRef={ el => this.menu = el }>
-              <Toggle onClick={ this.handleClick } open={ open }>
+            <Menu open={ open } innerRef={ el => this.menu = el } width={ width }>
+              <Toggle onClick={ this.handleClick } open={ open } width={ width }>
                 { title }
               </Toggle>
               <List open={ open } innerRef={ el => this.list = el }>

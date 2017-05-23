@@ -5,14 +5,92 @@ import Navbar from '../src/Components/Navbar'
 const items = [
     {
         dropdown: true,
-        title: 'Dropdown 1',
+        title: 'Genomes',
         items: [
             {
-                name: 'Link 1',
+                name: 'Genomes Home',
+                href: 'http://www.google.com'
+            }
+        ]
+    },
+    {
+        dropdown: true,
+        title: 'Tools',
+        items: [
+            {
+                name: 'Tools Home',
                 href: 'http://www.google.com'
             },
             {
-              name: 'Link 2',
+              name: 'New Genome Browser',
+              href: 'http://wwww.google.com'
+            }
+        ]
+    },
+    {
+        dropdown: true,
+        title: 'Explore',
+        items: [
+            {
+                name: 'Explore Home',
+                href: 'http://www.google.com'
+            },
+            {
+              name: 'Dicty Art',
+              href: 'http://wwww.google.com'
+            },
+            {
+                name: 'Gallery',
+                href: 'http://www.google.com'
+            },
+            {
+              name: 'Genome Resources',
+              href: 'http://wwww.google.com'
+            },
+            {
+                name: 'Genome Statistics',
+                href: 'http://www.google.com'
+            },
+            {
+              name: 'Learn About Dicty',
+              href: 'http://wwww.google.com'
+            },
+            {
+                name: 'Teaching Protocols',
+                href: 'http://www.google.com'
+            },
+            {
+              name: 'Useful Links',
+              href: 'http://wwww.google.com'
+            }
+        ]
+    },
+    {
+        dropdown: true,
+        title: 'Research',
+        items: [
+            {
+                name: 'Research Home',
+                href: 'http://www.google.com'
+            },
+            {
+              name: 'Anatomy Ontology',
+              href: 'http://wwww.google.com'
+            },
+            {
+                name: 'Codon Bias Table',
+                href: 'http://www.google.com'
+            },
+            {
+              name: 'Nomenclature Guidelines',
+              href: 'http://wwww.google.com'
+            },
+            {
+                name: 'Phenotyping',
+                href: 'http://www.google.com'
+            },
+            {
+              name: 'Techniques',
               href: 'http://wwww.google.com'
             }
         ]
@@ -22,48 +100,31 @@ const items = [
         title: 'Dicty Stock Center',
         items: [
             {
-                name: 'Link 1',
-                href: 'http://www.google.com'
-            },
-            {
-              name: 'Link 2',
-              href: 'http://wwww.google.com'
-            },
-            {
-                name: 'Link 3',
-                href: 'http://www.google.com'
-            },
-            {
-              name: 'Link 4',
-              href: 'http://wwww.google.com'
+              name: 'Stock Center Home',
+              href: 'http://www.google.com'
             }
         ]
     },
     {
-        title: 'Link 1',
-        href: 'http://www.google.com'
-    },
-    {
-        title: 'Link 2',
-        href: 'http://www.google.com'
-    },
-    {
-        title: 'Link 3',
-        href: 'http://www.google.com'
-    },
-    {
-        title: 'Link 4',
-        href: 'http://www.google.com'
-    },
-    {
-        title: 'Link 5',
-        href: 'http://www.google.com'
-    },
-    {
-        title: 'Link 6',
-        href: 'http://www.google.com'
+        dropdown: true,
+        title: 'Community',
+        items: [
+            {
+              name: 'Community Home',
+              href: 'http://www.google.com'
+            },
+            {
+              name: 'Cite Us',
+              href: 'http://www.google.com'
+            },
+            {
+              name: 'Dicty Annual Conferences',
+              href: 'http://www.google.com'
+            }
+        ]
     }
 ]
+
 // eslint-disable-next-line
 const brand = {
     title: 'Brand',

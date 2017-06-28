@@ -108,6 +108,7 @@ const Item = styled.li`
 `
 const Link = styled.a`
   text-decoration: none;
+  text-align: left;
   color: inherit;
   padding: 10px 10px 10px 5px;
   display: block;

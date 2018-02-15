@@ -1,6 +1,6 @@
 {
   "name": "dicty-components-navbar",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "main": "lib/index.js",
   "devDependencies": {
@@ -30,9 +30,9 @@
   },
   "dependencies": {
     "polished": "^1.0.2",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "styled-components": "^1.4.4"
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "styled-components": "^2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -40,6 +40,6 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "flow": "flow",
-    "demo": "webpack-dev-server --content-base ./examples --config ./examples/webpack.config.js"
+    "demo": "webpack-dev-server --port 3000 --host 0.0.0.0 --content-base ./examples --config ./examples/webpack.config.js"
   }
 }

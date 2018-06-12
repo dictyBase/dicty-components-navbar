@@ -1,6 +1,6 @@
 {
   "name": "dicty-components-navbar",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "private": true,
   "main": "lib/index.js",
   "devDependencies": {
@@ -13,6 +13,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
     "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.1.1",
     "eslint-config-react-app": "^2.1.0",
     "eslint-plugin-flowtype": "^2.49.3",

@@ -9,3 +9,7 @@ script:
   - npm run build
 before_script:
   - npm install
+branches:
+  only:
+  - develop
+  - master

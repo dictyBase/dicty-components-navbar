@@ -1,8 +1,8 @@
 // @flow
 import React from "react"
-import { withStyles } from "@material-ui/styles"
+import { makeStyles, useTheme } from "@material-ui/styles"
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   container: {
     listStyleType: "none",
     display: "flex",
@@ -10,27 +10,20 @@ const styles = theme => ({
     [theme.breakpoints.down("md")]: {
       height: "30px",
     },
-    // @media (maxWidth: 768px) {
-    //   height: 30px,
-    // }
   },
   link: {
     display: "block",
     margin: "auto",
     textDecoration: "none",
-    color: props => (props.theme.text ? props.theme.text : "white"),
+    color: theme => (theme.text ? theme.text : "white"),
     fontSize: "1.5em",
 
     [theme.breakpoints.down("md")]: {
       top: 0,
       zIndex: 10,
     },
-    // @media (max-width: 768px) {
-    //   top: 0,
-    //   z-index: 10,
-    // }
   },
-})
+}))
 
 type Props = {
   /** Title of link */
@@ -42,7 +35,10 @@ type Props = {
 }
 
 const Brand = (props: Props) => {
-  const { title, href, classes } = props
+  const { title, href } = props
+
+  const theme = useTheme()
+  const classes = useStyles(theme)
 
   return (
     <div className={classes.container}>
@@ -53,4 +49,4 @@ const Brand = (props: Props) => {
   )
 }
 
-export default withStyles(styles)(Brand)
+export default Brand

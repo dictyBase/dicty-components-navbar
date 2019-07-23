@@ -39,8 +39,7 @@
   },
   "dependencies": {
     "@material-ui/styles": "^4.2.0",
-    "polished": "^1.9.2",
-    "styled-components": "^2.4.0"
+    "polished": "^1.9.2"
   },
   "peerDependencies": {
     "react": "^16.8.0",

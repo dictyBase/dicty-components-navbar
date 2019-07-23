@@ -1,66 +1,72 @@
 // @flow
-import React, { Component } from 'react'
-import styled from 'styled-components'
+import React from "react"
+import { makeStyles, useTheme } from "@material-ui/styles"
 
-const Toggle = styled.div`
-  display: none;
-  position: relative;
-  padding: 5px;
-  margin: 5px 0px;
-  flex-direction: column;
-  justify-content: center;
-  ${''/* position: fixed; */}
-  top: 0;
-  ${''/* right: ${ props => props.open ? '15px' : '-50px' }; */}
-  height: 30px;
-  width: 30px;
-  cursor: pointer;
-  ${''/* transition: right 0.4s ease; */}
-  z-index: 10;
-  ${''/* transition: all 0.4s all; */}
+const useStyles = makeStyles((theme, open) => ({
+  toggle: {
+    display: "none",
+    position: "relative",
+    padding: "5px",
+    margin: "5px 0px",
+    flexDirection: "column",
+    justifyContent: "center",
+    top: 0,
+    height: "30px",
+    width: "30px",
+    cursor: "pointer",
+    zIndex: 10,
 
-  @media (max-width: 768px) {
-    display: flex;
-  }
-`
-const IconBarTop = styled.div`
-  height: 5px;
-  background: ${ props => props.theme.text ? props.theme.text : 'white' };
-  margin: 3px 0px;
-  transition: all 0.2s ease;
-  transform: ${ props => props.open ? 'rotate(-45deg) translate(-25%, 7px)' : 'rotate(0deg) translate(0px, 0px)' };
-`
-const IconBarMiddle = styled.div`
-  height: 5px;
-  background: ${ props => props.theme.text ? props.theme.text : 'white' };
-  margin: 3px 0px;
-  transition: all 0.1s ease;
-  width: ${ props => props.open ? '0%' : '100%' };
-`
-const IconBarBottom = styled.div`
-  height: 5px;
-  background: ${ props => props.theme.text ? props.theme.text : 'white' };
-  margin: 3px 0px;
-  transition: all 0.2s ease;
-  transform: ${ props => props.open ? 'rotate(45deg) translate(-25%, -6px)' : 'rotate(0deg) translate(0px, 0px)' };
-`
+    "@media (max-width: 768px)": {
+      display: "flex",
+    },
+  },
+  iconBarTop: {
+    height: "5px",
+    background: theme => (theme.text ? theme.text : "white"),
+    margin: "3px 0px",
+    transition: "all 0.2s ease",
+    transform: open =>
+      open
+        ? "rotate(-45deg) translate(-25%, 7px)"
+        : "rotate(0deg) translate(0px, 0px)",
+  },
+  iconBarMiddle: {
+    height: "5px",
+    background: theme => (theme.text ? theme.text : "white"),
+    margin: "3px 0px",
+    transition: "all 0.1s ease",
+    width: open => (open ? "0%" : "100%"),
+  },
+  iconBarBottom: {
+    height: "5px",
+    background: theme => (theme.text ? theme.text : "white"),
+    margin: "3px 0px",
+    transition: "all 0.2s ease",
+    transform: open =>
+      open
+        ? "rotate(45deg) translate(-25%, -6px)"
+        : "rotate(0deg) translate(0px, 0px)",
+  },
+}))
 
 type Props = {
-    onClick: Function,
-    open: boolean
+  onClick: Function,
+  open: boolean,
 }
 
-export default class MenuIcon extends Component {
-    displayName = 'Menu Icon'
-    props: Props
-    render() {
-      const { open, onClick } = this.props
-      return (
-          <Toggle role="button" onClick={ onClick } open={ open }>
-            <IconBarTop open={ open } />
-            <IconBarMiddle open={ open } />
-            <IconBarBottom open={ open } />
-          </Toggle>
-      )
-    }
+const MenuIcon = (props: Props) => {
+  const { open, onClick } = props
+
+  const theme = useTheme()
+  const classes = useStyles(theme, open)
+
+  return (
+    <div className={classes.toggle} role="button" onClick={onClick} open={open}>
+      <div className={classes.iconBarTop} open={open} />
+      <div className={classes.iconBarMiddle} open={open} />
+      <div className={classes.iconBarBottom} open={open} />
+    </div>
+  )
 }
+
+export default MenuIcon

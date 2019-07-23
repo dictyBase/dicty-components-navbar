@@ -1,41 +1,45 @@
 // @flow
-import React, { Component } from 'react'
-import styled from 'styled-components'
+import React from "react"
+import { makeStyles } from "@material-ui/styles"
 
-const ListItem = styled.li`
-  display: flex;
+const useStyles = makeStyles({
+  listItem: {
+    display: "flex",
 
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`
-const A = styled.a`
-  display: block;
-  color: ${ props => props.theme.text ? props.theme.text : 'white' };
-  text-decoration: none;
-  margin: auto;
-  padding: 10px;
-  height: 100%;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`
+    "@media (max-width: 768px)": {
+      width: "100%",
+    },
+  },
+  anchor: {
+    display: "block",
+    color: "white",
+    // color: props => (props.theme.text ? props.theme.text : "white"),
+    textDecoration: "none",
+    margin: "auto",
+    padding: "10px",
+    height: "100%",
+    "@media (max-width: 768px)": {
+      width: "100%",
+    },
+  },
+})
 
 type Props = {
-    title: String,
-    href: String
+  title: String,
+  href: String,
 }
 
-export default class Link extends Component {
-    props: Props
-    displayName = 'Link'
-    render() {
-        const { title, href } = this.props
-        return (
-            <ListItem>
-              <A href={ href }>{ title }</A>
-            </ListItem>
-        )
-    }
+const Link = (props: Props) => {
+  const { title, href } = props
+  const classes = useStyles()
+
+  return (
+    <li className={classes.link}>
+      <a href={href} alt={title} className={classes.anchor}>
+        {title}
+      </a>
+    </li>
+  )
 }
+
+export default Link

@@ -125,37 +125,30 @@ const items = [
   },
   {
     dropdown: false,
-    title: "No Dropdown Example",
+    title: "Bananas",
     href: "/bananas",
   },
 ]
 
-// eslint-disable-next-line
 const brand = {
   title: "Brand",
   href: "http://www.google.com",
 }
-// Primary: Nav background,
-// Secondary: Borders, highlights, dropdowns
-// primaryText: all on the primary background,
-// secondaryText: all text on the secondary color
+// primary: Nav background,
+// secondary: Borders, highlights, dropdowns
+// text: color of text
 
 const theme1 = {
   primary: "#3AAED8",
   secondary: "#2BD9FE",
   text: "white",
 }
-// eslint-disable-next-line
-const theme2 = {
-  primary: "#6E2594",
-  secondary: "#05668D",
-  text: "white",
-}
+
 export default class App extends Component {
   render() {
     return (
       <div>
-        <Navbar theme={theme1} items={items} />
+        <Navbar brand={brand} theme={theme1} items={items} />
       </div>
     )
   }

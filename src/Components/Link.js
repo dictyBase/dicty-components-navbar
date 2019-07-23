@@ -1,19 +1,17 @@
 // @flow
 import React from "react"
-import { makeStyles } from "@material-ui/styles"
+import { makeStyles, useTheme } from "@material-ui/styles"
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   listItem: {
     display: "flex",
-
     "@media (max-width: 768px)": {
       width: "100%",
     },
   },
   anchor: {
     display: "block",
-    color: "white",
-    // color: props => (props.theme.text ? props.theme.text : "white"),
+    color: theme => (theme.text ? theme.text : "white"),
     textDecoration: "none",
     margin: "auto",
     padding: "10px",
@@ -22,16 +20,20 @@ const useStyles = makeStyles({
       width: "100%",
     },
   },
-})
+}))
 
 type Props = {
+  /** Link title */
   title: String,
+  /** Link URL */
   href: String,
 }
 
 const Link = (props: Props) => {
   const { title, href } = props
-  const classes = useStyles()
+
+  const theme = useTheme()
+  const classes = useStyles(theme)
 
   return (
     <li className={classes.link}>

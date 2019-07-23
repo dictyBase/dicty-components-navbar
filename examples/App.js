@@ -139,8 +139,8 @@ const brand = {
 // text: color of text
 
 const theme1 = {
-  primary: "#3AAED8",
-  secondary: "#2BD9FE",
+  primary: "#004080",
+  secondary: "#0059b3",
   text: "white",
 }
 

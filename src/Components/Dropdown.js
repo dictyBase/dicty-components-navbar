@@ -120,13 +120,22 @@ const Item = styled(({ theme, ...other }) => <li {...other} />)({
 const Link = styled(({ theme, ...other }) => <a {...other} />)({
   textDecoration: "none",
   textAlign: "left",
-  color: "white",
-  background: props => (props.theme.primary ? props.theme.primary : "#15317e"),
+  background: "white",
+  color: props => (props.theme.primary ? props.theme.primary : "#15317e"),
   padding: "10px 10px 10px 5px",
   display: "block",
 
+  "&:hover": {
+    color: "white",
+    background: props =>
+      props.theme.primary ? props.theme.primary : "#15317e",
+  },
+
   "@media (max-width: 768px)": {
     padding: "10px 0px 10px 40px",
+    color: "white !important",
+    background: props =>
+      props.theme.primary ? props.theme.primary : "#15317e",
   },
 })
 

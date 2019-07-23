@@ -7,7 +7,7 @@ const useStyles = makeStyles(theme => ({
     listStyleType: "none",
     display: "flex",
     padding: "10px",
-    [theme.breakpoints.down("md")]: {
+    "@media (maxWidth: 768px)": {
       height: "30px",
     },
   },
@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     color: theme => (theme.text ? theme.text : "white"),
     fontSize: "1.5em",
 
-    [theme.breakpoints.down("md")]: {
+    "@media (max-width: 768px)": {
       top: 0,
       zIndex: 10,
     },

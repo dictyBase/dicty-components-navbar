@@ -1,74 +1,77 @@
 // @flow
-import React, { Component } from "react"
-import { ThemeProvider } from "@material-ui/styles"
-import styled from "styled-components"
+import React, { Component, forwardRef } from "react"
+import { ThemeProvider, styled } from "@material-ui/styles"
 import Brand from "./Brand"
 import Dropdown from "./Dropdown"
 import Link from "./Link"
 import MenuIcon from "./MenuIcon"
 import { transitionToAuto, transitionFromAuto, wasClicked } from "../utils/dom"
 
-const Container = styled.div`
-  width: 100%;
-  z-index: 10000;
+const Container = styled(
+  forwardRef(({ ...other }, ref) => <div {...other} ref={ref} />),
+)({
+  width: "100%",
+  zIndex: "10000",
 
-  @media (max-width: 768px) {
-    overflow: hidden;
-    position: initial;
-    height: 50px;
-    transition: height 0.3s ease;
-    -ms-overflow-style: none;
-    overflow: -moz-scrollbars-none;
-    &::-webkit-scrollbar {
-      width: 0 !important;
-    }
-  }
-`
-const Nav = styled.nav`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  background: ${props =>
-    props.theme.primary ? props.theme.primary : "#15317e"};
-  color: ${props => (props.theme.text ? props.theme.text : "white")};
-  min-height: ${props =>
-    props.theme.height ? props.theme.height + "px" : "50px"};
+  "@media (max-width: 768px)": {
+    overflow: "hidden",
+    position: "initial",
+    height: "50px",
+    transition: "height 0.3s ease",
+    "-ms-overflow-style:": "none",
+    // overflow: "-moz-scrollbars-none",
+    "&::-webkit-scrollbar": {
+      width: "0 !important",
+    },
+  },
+})
 
-  @media (max-width: 768px) {
-    position: relative;
-    flex-direction: column;
-    align-items: flex-start;
-    min-width: 200px;
-    min-height: 100%;
-  }
-`
-const Items = styled.ul`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+const Nav = styled(
+  forwardRef(({ theme, ...other }, ref) => <nav {...other} ref={ref} />),
+)({
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "nowrap",
+  background: props => (props.theme.primary ? props.theme.primary : "#15317e"),
+  color: props => (props.theme.text ? props.theme.text : "white"),
+  minHeight: props => (props.theme.height ? props.theme.height + "px" : "50px"),
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
-    align-items: flex-start;
-    width: 100%;
-  }
-`
-const Header = styled.li`
-  list-style-type: none;
+  "@media (max-width: 768px)": {
+    position: "relative",
+    flexDirection: "column",
+    alignItems: "flex-start",
+    minWidth: "200px",
+    minHeight: "100%",
+  },
+})
+const Items = styled("ul")({
+  display: "flex",
+  flexDirection: "row",
+  flexWrap: "nowrap",
+  alignItems: "center",
+  margin: 0,
+  padding: 0,
+  listStyleType: "none",
 
-  @media (max-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 10;
-    width: 100%;
-  }
-`
+  "@media (max-width: 768px)": {
+    flexDirection: "column",
+    alignItems: "center",
+    // alignItems: "flex-start",
+    width: "100%",
+  },
+})
+
+const Header = styled("li")({
+  listStyleType: "none",
+
+  "@media (max-width: 768px)": {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    zIndex: 10,
+    width: "100%",
+  },
+})
 
 type Props = {
   items: Array<Object>,
@@ -187,8 +190,8 @@ export default class Navbar extends Component {
           open={open}
           items={items}
           brand={brand}
-          innerRef={el => (this.container = el)}>
-          <Nav open={open} innerRef={el => (this.nav = el)}>
+          ref={el => (this.container = el)}>
+          <Nav open={open} theme={theme} ref={el => (this.nav = el)}>
             <Header open={open}>
               <MenuIcon
                 onClick={this.toggle}

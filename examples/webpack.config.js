@@ -21,11 +21,18 @@ module.exports = {
           loader: "babel-loader",
           options: {
             presets: [
-              "env",
-              ["es2015", { modules: false }],
-              "react",
-              "flow",
-              "stage-0",
+              "@babel/preset-env",
+              "@babel/preset-react",
+              "@babel/preset-flow",
+            ],
+            plugins: [
+              "@babel/plugin-proposal-function-bind",
+              [
+                "@babel/plugin-proposal-class-properties",
+                {
+                  loose: true,
+                },
+              ],
             ],
           },
         },

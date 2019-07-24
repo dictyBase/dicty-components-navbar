@@ -65,9 +65,7 @@ describe("Navbar", () => {
     wrapper.unmount()
   })
   it("should render without crashing", () => {
-    const div = document.createElement("div")
-    const el = <Navbar {...props} />
-    ReactDOM.render(el, div)
+    expect(wrapper).toHaveLength(1)
   })
   it("should render a brand if one is specified", () => {
     expect(wrapper.find(Brand).length).toEqual(1)

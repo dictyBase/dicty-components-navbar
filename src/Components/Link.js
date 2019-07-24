@@ -1,47 +1,44 @@
 // @flow
 import React from "react"
-import { makeStyles, useTheme } from "@material-ui/styles"
+import { styled, withTheme } from "@material-ui/styles"
 
-const useStyles = makeStyles(theme => ({
-  listItem: {
-    display: "flex",
-    "@media (max-width: 768px)": {
-      width: "100%",
-    },
+const ListItem = styled("li")({
+  display: "flex",
+  "@media (max-width: 768px)": {
+    width: "100%",
   },
-  anchor: {
-    display: "block",
-    color: theme => (theme.text ? theme.text : "white"),
-    textDecoration: "none",
-    margin: "auto",
-    padding: "10px",
-    height: "100%",
-    "@media (max-width: 768px)": {
-      width: "100%",
-    },
+})
+const Anchor = styled(({ theme, ...other }) => <a {...other} />)({
+  display: "block",
+  color: props => (props.theme.text ? props.theme.text : "white"),
+  textDecoration: "none",
+  margin: "auto",
+  padding: "10px",
+  height: "100%",
+  "@media (max-width: 768px)": {
+    width: "100%",
   },
-}))
+})
 
 type Props = {
   /** Link title */
   title: String,
   /** Link URL */
   href: String,
+  /** Material-UI theme */
+  theme: Object,
 }
 
 const Link = (props: Props) => {
-  const { title, href } = props
-
-  const theme = useTheme()
-  const classes = useStyles(theme)
+  const { title, href, theme } = props
 
   return (
-    <li className={classes.link}>
-      <a href={href} alt={title} className={classes.anchor}>
+    <ListItem>
+      <Anchor href={href} alt={title} theme={theme}>
         {title}
-      </a>
-    </li>
+      </Anchor>
+    </ListItem>
   )
 }
 
-export default Link
+export default withTheme(Link)

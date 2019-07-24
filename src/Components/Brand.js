@@ -1,52 +1,47 @@
 // @flow
 import React from "react"
-import { makeStyles, useTheme } from "@material-ui/styles"
+import { styled, withTheme } from "@material-ui/styles"
 
-const useStyles = makeStyles(theme => ({
-  container: {
-    listStyleType: "none",
-    display: "flex",
-    padding: "10px",
-    "@media (maxWidth: 768px)": {
-      height: "30px",
-    },
+const Container = styled("div")({
+  listStyleType: "none",
+  display: "flex",
+  padding: "10px",
+  "@media (maxWidth: 768px)": {
+    height: "30px",
   },
-  link: {
-    display: "block",
-    margin: "auto",
-    textDecoration: "none",
-    color: theme => (theme.text ? theme.text : "white"),
-    fontSize: "1.5em",
+})
+const Link = styled(({ theme, ...other }) => <a {...other} />)({
+  display: "block",
+  margin: "auto",
+  textDecoration: "none",
+  color: props => (props.theme.text ? props.theme.text : "white"),
+  fontSize: "1.5em",
 
-    "@media (max-width: 768px)": {
-      top: 0,
-      zIndex: 10,
-    },
+  "@media (max-width: 768px)": {
+    top: 0,
+    zIndex: 10,
   },
-}))
+})
 
 type Props = {
   /** Title of link */
   title: String,
   /** Link URL */
   href: String,
-  /** Material-UI styling */
-  classes: Object,
+  /** Material-UI theme */
+  theme: Object,
 }
 
 const Brand = (props: Props) => {
-  const { title, href } = props
-
-  const theme = useTheme()
-  const classes = useStyles(theme)
+  const { title, href, theme } = props
 
   return (
-    <div className={classes.container}>
-      <a className={classes.link} href={href}>
+    <Container>
+      <Link theme={theme} href={href}>
         {title}
-      </a>
-    </div>
+      </Link>
+    </Container>
   )
 }
 
-export default Brand
+export default withTheme(Brand)

@@ -1,10 +1,4 @@
 {
-    "presets": [
-      "es2015",
-      "stage-0",
-      "flow",
-      "react"
-    ],
-    "plugins": ["add-react-displayname"],
-    "ignore": ["*.spec.js", "*.test.js"]
+  "presets": ["es2015", "stage-0", "flow", "react"],
+  "ignore": ["*.spec.js", "*.test.js"]
 }

@@ -19,7 +19,6 @@ const Container = styled(
     height: "50px",
     transition: "height 0.3s ease",
     "-ms-overflow-style:": "none",
-    // overflow: "-moz-scrollbars-none",
     "&::-webkit-scrollbar": {
       width: "0 !important",
     },
@@ -56,7 +55,6 @@ const Items = styled("ul")({
   "@media (max-width: 768px)": {
     flexDirection: "column",
     alignItems: "center",
-    // alignItems: "flex-start",
     width: "100%",
   },
 })

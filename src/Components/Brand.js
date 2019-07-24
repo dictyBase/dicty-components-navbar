@@ -32,6 +32,10 @@ type Props = {
   theme: Object,
 }
 
+/**
+ * Brand creates a "brand" item in the navbar.
+ */
+
 const Brand = (props: Props) => {
   const { title, href, theme } = props
 

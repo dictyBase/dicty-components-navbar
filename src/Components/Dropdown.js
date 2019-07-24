@@ -148,7 +148,11 @@ type Props = {
   items: Array<Object>,
 }
 
-class Dropdown extends Component {
+/**
+ * Dropdown provides a dropdown menu with a set of specified items.
+ */
+
+class Dropdown extends Component<Props> {
   menu: any
   list: any
   constructor() {

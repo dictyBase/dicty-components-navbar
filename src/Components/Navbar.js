@@ -81,12 +81,14 @@ type State = {
   open: boolean,
 }
 
-export default class Navbar extends Component {
-  displayName = "Navbar"
-  props: Props
-  state: State
+/**
+ * Navbar is the outer container for the navbar library.
+ */
+
+export default class Navbar extends Component<Props, State> {
   nav: any
   icon: any
+  container: any
   constructor() {
     super()
     this.state = {
@@ -99,7 +101,7 @@ export default class Navbar extends Component {
     // Necessary to allow container to expand to accomodate open dropdowns
     this.container.addEventListener("transitionend", this.handleTransitionend)
   }
-  handleTransitionend = e => {
+  handleTransitionend = (e: SyntheticTransitionEvent<>) => {
     const { open } = this.state
     if (open && e.propertyName === "height") {
       this.container.style.height = "auto"
@@ -111,7 +113,7 @@ export default class Navbar extends Component {
       this.close()
     }
   }
-  toggle = (e: SyntheticEvent) => {
+  toggle = (e: SyntheticEvent<>) => {
     const { open } = this.state
 
     e.nativeEvent.stopImmediatePropagation()

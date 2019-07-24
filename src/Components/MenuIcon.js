@@ -52,7 +52,12 @@ const IconBarBottom = styled(({ theme, open, ...other }) => <div {...other} />)(
 type Props = {
   onClick: Function,
   open: boolean,
+  theme: Object,
 }
+
+/**
+ * MenuIcon is the hamburger style icon displayed on mobile view.
+ */
 
 class MenuIcon extends Component<Props> {
   render() {

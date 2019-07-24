@@ -29,6 +29,10 @@ type Props = {
   theme: Object,
 }
 
+/**
+ * Link is used for menu items without dropdowns.
+ */
+
 const Link = (props: Props) => {
   const { title, href, theme } = props
 

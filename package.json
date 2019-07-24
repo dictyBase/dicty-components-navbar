@@ -40,7 +40,7 @@
     "webpack-dev-server": "^3.2.1"
   },
   "dependencies": {
-    "@material-ui/styles": "^4.2.0",
+    "@material-ui/styles": "^4.2.1",
     "polished": "^3.4.1"
   },
   "peerDependencies": {

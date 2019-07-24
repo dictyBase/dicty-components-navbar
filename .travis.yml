@@ -1,6 +1,8 @@
 language: node_js
 node_js:
-    - "7"
+  - "7"
+env:
+  - SKIP_PREFLIGHT_CHECK=true
 cache:
   directories:
     - node_modules
@@ -11,5 +13,5 @@ before_script:
   - npm install
 branches:
   only:
-  - develop
-  - master
+    - develop
+    - master

@@ -11,6 +11,14 @@
     "flow": "flow",
     "demo": "webpack-dev-server --port 3000 --host 0.0.0.0 --content-base ./examples --config ./examples/webpack.config.js"
   },
+  "dependencies": {
+    "polished": "^3.4.1"
+  },
+  "peerDependencies": {
+    "@material-ui/styles": "^4.2.1",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
   "devDependencies": {
     "@babel/cli": "^7.5.5",
     "@babel/core": "^7.5.5",
@@ -38,13 +46,5 @@
     "webpack": "^4.29.6",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.2.1"
-  },
-  "dependencies": {
-    "@material-ui/styles": "^4.2.1",
-    "polished": "^3.4.1"
-  },
-  "peerDependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0"
   }
 }

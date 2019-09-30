@@ -1,9 +1,32 @@
-[![Build Status](https://travis-ci.org/dictyBase/dicty-components-navbar.svg?branch=master)](https://travis-ci.org/dictyBase/dicty-components-navbar)
-[![Dependency Status](https://david-dm.org/dictybase/dicty-components-navbar.svg)](https://david-dm.org/dictybase/dicty-components-navbar)
-[![Dev Dependency Status](https://david-dm.org/dictybase/dicty-components-navbar/dev-status.svg)](https://david-dm.org/dictybase/dicty-components-navbar?type=dev)
+# dicty-components-navbar
 
-# Navbar Component
-A responsive, themable Navbar component using React with [styled-components](https://github.com/styled-components/styled-components).
+[![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](LICENSE)  
+![GitHub action](https://github.com/dictyBase/dicty-components-navbar/workflows/Node%20CI/badge.svg)
+[![Dependency Status](https://david-dm.org/dictyBase/dicty-components-navbar/develop.svg?style=flat-square)](https://david-dm.org/dictyBase/dicty-components-navbar/develop)
+[![devDependency Status](https://david-dm.org/dictyBase/dicty-components-navbar/develop/dev-status.svg?style=flat-square)](https://david-dm.org/dictyBase/dicty-components-navbar/develop?type=dev)
+![GitHub tag](https://img.shields.io/github/v/tag/dictyBase/dicty-components-navbar)  
+![Commits](https://badgen.net/github/commits/dictyBase/dicty-components-navbar/develop)
+![Last commit](https://badgen.net/github/last-commit/dictyBase/dicty-components-navbar/develop)
+![Branches](https://badgen.net/github/branches/dictyBase/dicty-components-navbar)
+![Tags](https://badgen.net/github/tags/dictyBase/dicty-components-navbar)
+![GitHub repo size](https://img.shields.io/github/repo-size/dictyBase/dicty-components-navbar?style=plastic)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/dictyBase/dicty-components-navbar?style=plastic)
+[![Lines of Code](https://badgen.net/codeclimate/loc/dictyBase/dicty-components-navbar)](https://codeclimate.com/github/dictyBase/dicty-components-navbar/code)  
+![Issues](https://badgen.net/github/issues/dictyBase/dicty-components-navbar)
+![Open Issues](https://badgen.net/github/open-issues/dictyBase/dicty-components-navbar)
+![Closed Issues](https://badgen.net/github/closed-issues/dictyBase/dicty-components-navbar)
+![Total PRS](https://badgen.net/github/prs/dictyBase/dicty-components-navbar)
+![Open PRS](https://badgen.net/github/open-prs/dictyBase/dicty-components-navbar)
+![Closed PRS](https://badgen.net/github/closed-prs/dictyBase/dicty-components-navbar)
+![Merged PRS](https://badgen.net/github/merged-prs/dictyBase/dicty-components-navbar)  
+[![Technical debt](https://badgen.net/codeclimate/tech-debt/dictyBase/dicty-components-navbar)](https://codeclimate.com/github/dictyBase/dicty-components-navbar/trends/technical_debt)
+[![Issues](https://badgen.net/codeclimate/issues/dictyBase/dicty-components-navbar)](https://codeclimate.com/github/dictyBase/dicty-components-navbar/issues)
+[![Maintainability percentage](https://badgen.net/codeclimate/maintainability-percentage/dictyBase/dicty-components-navbar)](https://codeclimate.com/github/dictyBase/dicty-components-navbar)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=dictyBase/dicty-components-navbar)](https://dependabot.com)  
+[![Funding](https://badgen.net/badge/NIGMS/Rex%20L%20Chisholm,dictyBase/yellow?list=|)](https://projectreporter.nih.gov/project_info_description.cfm?aid=9476993)
+[![Funding](https://badgen.net/badge/NIGMS/Rex%20L%20Chisholm,DSC/yellow?list=|)](https://projectreporter.nih.gov/project_info_description.cfm?aid=9438930)
+
+This is a responsive, themable navbar React library with [Material-UI styled components](https://material-ui.com/).
 
 ## Demo
 
@@ -32,8 +55,8 @@ The top level `Navbar` component will take care of rendering all of the sub-comp
 
 ```js
 const brand = {
-    title: "Hello",
-    href: "http://www.google.com"
+  title: "Hello",
+  href: "http://www.google.com",
 }
 ```
 
@@ -41,27 +64,27 @@ Setting the nav items is similar, but comes with a few more options:
 
 ```jsx
 const items = [
-    {
-        // Format for a dropdown
-        dropdown: true,
-        title: 'Drop',
-        items: [
-            {
-                name: 'Dropdown 1',
-                href: 'http://www.google.com'
-            }
-        ]
-    },
-    {
-        // For a normal nav link
-        title: 'Link 1',
-        href: 'http://www.google.com'
-    },
-    {
-        // Or any element you want!
-        // Custom elements will be flex children of navbar, laid out in a row for desktop and a column for mobile
-        element: <div className="custom">custom</div>
-    }
+  {
+    // Format for a dropdown
+    dropdown: true,
+    title: "Drop",
+    items: [
+      {
+        name: "Dropdown 1",
+        href: "http://www.google.com",
+      },
+    ],
+  },
+  {
+    // For a normal nav link
+    title: "Link 1",
+    href: "http://www.google.com",
+  },
+  {
+    // Or any element you want!
+    // Custom elements will be flex children of navbar, laid out in a row for desktop and a column for mobile
+    element: <div className="custom">custom</div>,
+  },
 ]
 ```
 
@@ -131,11 +154,11 @@ Note: This component adds an event listener to the document object to detect cli
 
 These components expose a few themable properties, listed below. If you are using the top-level `Navbar` component, you need only provide it with the theme prop. If you are using individual components, each of them will need their own theme prop.
 
-| Property      | Type   | Purpose                                                                                                                          |
-| ------------- | ------ | -------------------------------------------------------------------------------------------------------------------------------- |
-| primary       | string | An RGB, hex, or CSS color string that will be the background color for the `Navbar`.                                             |
-| secondary     | string | An RGB, hex, or CSS color string that will be the background color for hovered links, active `Dropdown`'s, `Dropdown` borders, and the text color for non-hovered `Dropdown` links. |
-| text          | string | An RGB, hex, or CSS color string that will be the primary text color for the `Navbar`.                                           |
+| Property  | Type   | Purpose                                                                                                                                                                             |
+| --------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| primary   | string | An RGB, hex, or CSS color string that will be the background color for the `Navbar`.                                                                                                |
+| secondary | string | An RGB, hex, or CSS color string that will be the background color for hovered links, active `Dropdown`'s, `Dropdown` borders, and the text color for non-hovered `Dropdown` links. |
+| text      | string | An RGB, hex, or CSS color string that will be the primary text color for the `Navbar`.                                                                                              |
 
 ## Utility Functions
 

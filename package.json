@@ -44,7 +44,7 @@
     "semantic-release": "^15.13.24",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.2.1"
+    "webpack-dev-server": "^3.8.2"
   },
   "config": {
     "commitizen": {

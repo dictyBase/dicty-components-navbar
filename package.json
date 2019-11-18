@@ -41,7 +41,7 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "^3.2.0",
-    "semantic-release": "^15.13.30",
+    "semantic-release": "^15.13.31",
     "webpack": "^4.40.2",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.2.1"

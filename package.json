@@ -27,7 +27,7 @@
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-flow": "^7.9.0",
     "@babel/preset-react": "^7.9.4",
-    "@material-ui/styles": "^4.9.6",
+    "@material-ui/styles": "^4.9.10",
     "@semantic-release/git": "^7.0.18",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",

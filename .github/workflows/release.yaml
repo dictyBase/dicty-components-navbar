@@ -1,0 +1,21 @@
+name: Release
+on:
+  push:
+    branches:
+      - master
+jobs:
+  semantic-release:
+    runs-on: ubuntu-18.04
+    steps:
+      - name: set up node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.x
+      - name: check out code
+        uses: actions/checkout@v1
+      - name: install
+        run: npm ci
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+        run: npx semantic-release

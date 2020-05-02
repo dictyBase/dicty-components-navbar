@@ -38,7 +38,7 @@
     "enzyme-adapter-react-16": "^1.15.2",
     "flow-bin": "^0.123.0",
     "html-loader": "^1.1.0",
-    "html-webpack-plugin": "^4.2.0",
+    "html-webpack-plugin": "^4.3.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "^3.4.1",

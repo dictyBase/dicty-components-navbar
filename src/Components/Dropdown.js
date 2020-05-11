@@ -13,7 +13,7 @@ const Menu = styled(
   height: "100%",
   padding: 0,
   position: "relative",
-  background: props =>
+  background: (props) =>
     props.open && props.theme.secondary ? props.theme.secondary : "transparent",
   transition: "all 0.2s ease",
 
@@ -27,8 +27,8 @@ const Toggle = styled(({ theme, open, ...other }) => <li {...other} />)({
   cursor: "pointer",
   padding: "0px 20px 0px 10px",
   transition: "transform 0.3s ease, top 0.3s ease, bottom 0.3s ease",
-  color: props => (props.theme.text ? props.theme.text : "white"),
-  lineHeight: props => (props.theme.height ? props.theme.height : "50px"),
+  color: (props) => (props.theme.text ? props.theme.text : "white"),
+  lineHeight: (props) => (props.theme.height ? props.theme.height : "50px"),
 
   "@media (max-width: 768px)": {
     lineHeight: "initial",
@@ -39,7 +39,7 @@ const Toggle = styled(({ theme, open, ...other }) => <li {...other} />)({
   "&::after": {
     content: "''",
     position: "absolute",
-    top: props => (props.open ? "9px" : "0px"),
+    top: (props) => (props.open ? "9px" : "0px"),
     bottom: 0,
     right: "5px",
     margin: "auto",
@@ -47,16 +47,16 @@ const Toggle = styled(({ theme, open, ...other }) => <li {...other} />)({
     height: 0,
     borderLeft: "5px solid transparent",
     borderRight: "5px solid transparent",
-    borderTop: props =>
+    borderTop: (props) =>
       props.theme.text ? `5px solid ${props.theme.text}` : "5px solid white",
-    transform: props => (props.open ? "rotateX(180deg)" : "rotateX(0deg)"),
+    transform: (props) => (props.open ? "rotateX(180deg)" : "rotateX(0deg)"),
     transformOrigin: "top",
     transition: "inherit",
 
     "@media (max-width: 768px)": {
-      top: props => (props.open ? "19px" : "11px"),
+      top: (props) => (props.open ? "19px" : "11px"),
       right: "25px",
-      bottom: props => (props.open ? "11px" : "10px"),
+      bottom: (props) => (props.open ? "11px" : "10px"),
     },
   },
 })
@@ -77,19 +77,19 @@ const List = styled(
   listStyleType: "none",
   transition: "all 0.2s ease",
   background: "white",
-  borderLeft: props =>
+  borderLeft: (props) =>
     props.theme.secondary
       ? `1px solid ${props.theme.secondary}`
       : "1px solid #333",
-  borderRight: props =>
+  borderRight: (props) =>
     props.theme.secondary
       ? `1px solid ${props.theme.secondary}`
       : "1px solid #333",
-  borderBottom: props =>
+  borderBottom: (props) =>
     props.theme.secondary
       ? `1px solid ${props.theme.secondary}`
       : "1px solid #333",
-  borderBottomWidth: props => (props.open ? "1px" : "0px"),
+  borderBottomWidth: (props) => (props.open ? "1px" : "0px"),
   borderBottomRightRadius: "3px",
   borderBottomLeftRadius: "3px",
   boxShadow: "0px 6px 12px rgba(0, 0, 0, 0.3)",
@@ -100,16 +100,16 @@ const List = styled(
     position: "relative",
     top: 0,
     border: "none",
-    color: props => (props.theme.secondary ? props.theme.secondary : "black"),
+    color: (props) => (props.theme.secondary ? props.theme.secondary : "black"),
     boxShadow: "none",
-    background: props =>
+    background: (props) =>
       props.theme.primary ? props.theme.primary : "#15317e",
   },
 })
 
 const Item = styled(({ theme, ...other }) => <li {...other} />)({
   position: "relative",
-  color: props => (props.theme.primary ? props.theme.primary : "black"),
+  color: (props) => (props.theme.primary ? props.theme.primary : "black"),
   transition: "all 0.14s ease",
 
   "@media (max-width: 768px)": {
@@ -117,24 +117,25 @@ const Item = styled(({ theme, ...other }) => <li {...other} />)({
   },
 })
 
+// eslint-disable-next-line
 const Link = styled(({ theme, ...other }) => <a {...other} />)({
   textDecoration: "none",
   textAlign: "left",
   background: "white",
-  color: props => (props.theme.primary ? props.theme.primary : "#15317e"),
+  color: (props) => (props.theme.primary ? props.theme.primary : "#15317e"),
   padding: "10px 10px 10px 5px",
   display: "block",
 
   "&:hover": {
     color: "white",
-    background: props =>
+    background: (props) =>
       props.theme.primary ? props.theme.primary : "#15317e",
   },
 
   "@media (max-width: 768px)": {
     padding: "10px 0px 10px 40px",
     color: "white !important",
-    background: props =>
+    background: (props) =>
       props.theme.primary ? props.theme.primary : "#15317e",
   },
 })
@@ -196,15 +197,13 @@ class Dropdown extends Component<Props> {
   }
   renderItems = (): ?React$Element<any> => {
     let { items, theme } = this.props
-    items = items.map((item, i) => {
-      return (
-        <Item key={i} theme={theme}>
-          <Link href={item.href} theme={theme}>
-            {item.name}
-          </Link>
-        </Item>
-      )
-    })
+    items = items.map((item, i) => (
+      <Item key={i} theme={theme}>
+        <Link href={item.href} theme={theme}>
+          {item.name}
+        </Link>
+      </Item>
+    ))
     return items
   }
   componentWillReceiveProps(nextProps: Props) {
@@ -226,7 +225,7 @@ class Dropdown extends Component<Props> {
       <Menu
         theme={theme}
         open={open}
-        ref={el => (this.menu = el)}
+        ref={(el) => (this.menu = el)}
         width={width}>
         <Toggle
           theme={theme}
@@ -235,7 +234,7 @@ class Dropdown extends Component<Props> {
           width={width}>
           {title}
         </Toggle>
-        <List theme={theme} open={open} ref={el => (this.list = el)}>
+        <List theme={theme} open={open} ref={(el) => (this.list = el)}>
           {this.renderItems()}
         </List>
       </Menu>

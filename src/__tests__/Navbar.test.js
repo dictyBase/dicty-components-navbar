@@ -1,5 +1,4 @@
 import React from "react"
-import ReactDOM from "react-dom"
 import { mount } from "enzyme"
 import Navbar from "../Components/Navbar"
 import Brand from "../Components/Brand"
@@ -100,32 +99,17 @@ describe("Navbar", () => {
     expect(wrapper.instance().close.mock.calls.length).toEqual(1)
   })
   it("should set its active index to that of any dropdown that is opened", () => {
-    wrapper
-      .find(Dropdown)
-      .first()
-      .find("li")
-      .first()
-      .simulate("click")
+    wrapper.find(Dropdown).first().find("li").first().simulate("click")
     expect(wrapper.state("activeIndex")).toEqual(0)
   })
   it("should set its active index to that of any dropdown that is opened while another dropdown is open", () => {
     wrapper.setState({ activeIndex: 1 })
-    wrapper
-      .find(Dropdown)
-      .first()
-      .find("li")
-      .first()
-      .simulate("click")
+    wrapper.find(Dropdown).first().find("li").first().simulate("click")
     expect(wrapper.state("activeIndex")).toEqual(0)
   })
   it("should set its active index to -1 if a dropdown is closed", () => {
     wrapper.setState({ activeIndex: 0 })
-    wrapper
-      .find(Dropdown)
-      .first()
-      .find("li")
-      .first()
-      .simulate("click")
+    wrapper.find(Dropdown).first().find("li").first().simulate("click")
     expect(wrapper.state("activeIndex")).toEqual(-1)
   })
   it("should set its active index to -1 if it is closed", () => {

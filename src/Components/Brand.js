@@ -10,11 +10,12 @@ const Container = styled("div")({
     height: "30px",
   },
 })
+// eslint-disable-next-line
 const Link = styled(({ theme, ...other }) => <a {...other} />)({
   display: "block",
   margin: "auto",
   textDecoration: "none",
-  color: props => (props.theme.text ? props.theme.text : "white"),
+  color: (props: any) => (props.theme.text ? props.theme.text : "white"),
   fontSize: "1.5em",
 
   "@media (max-width: 768px)": {

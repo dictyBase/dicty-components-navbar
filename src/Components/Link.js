@@ -8,9 +8,10 @@ const ListItem = styled("li")({
     width: "100%",
   },
 })
+// eslint-disable-next-line
 const Anchor = styled(({ theme, ...other }) => <a {...other} />)({
   display: "block",
-  color: props => (props.theme.text ? props.theme.text : "white"),
+  color: (props: any) => (props.theme.text ? props.theme.text : "white"),
   textDecoration: "none",
   margin: "auto",
   padding: "10px",

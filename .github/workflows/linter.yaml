@@ -10,8 +10,7 @@ jobs:
           node-version: 10.x
       - name: check out code
         uses: actions/checkout@v1
+      - name: npm install
+        run: npm install
       - name: eslint
-        uses: reviewdog/action-eslint@v1
-        with:
-          github_token: ${{ secrets.github_token }}
-          eslint_flags: "src/"
+        run: npm run lint

@@ -1,0 +1,19 @@
+name: Create Pull Request
+on: create
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+    if: github.actor != 'dependabot[bot]'
+    steps:
+      - uses: actions/checkout@v2
+      - name: get branch name
+        id: vars
+        run: |
+          branch=$(echo ${{ github.ref }} | sed -r 's/refs\/heads\///')
+          echo ::set-output name=branch::${branch}
+      - name: pull-request
+        uses: repo-sync/pull-request@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          destination_branch: develop
+          pr_title: Pulling ${{ steps.vars.outputs.branch }} into develop

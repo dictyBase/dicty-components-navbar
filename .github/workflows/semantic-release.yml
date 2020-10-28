@@ -5,7 +5,7 @@ on:
       - master
 jobs:
   semantic-release:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: set up node.js
         uses: actions/setup-node@v1

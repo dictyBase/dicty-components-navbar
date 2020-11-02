@@ -2,6 +2,7 @@ name: Pull Request Testing
 on: pull_request
 jobs:
   test:
+    name: Unit tests
     runs-on: ubuntu-20.04
     steps:
       - name: set up node.js

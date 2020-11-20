@@ -17,6 +17,19 @@
         "doc",
         "maintenance"
       ]
+    },
+    {
+      "login": "cybersiddhu",
+      "name": "Siddhartha Basu",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/48740?v=4",
+      "profile": "http://cybersiddhu.github.com/",
+      "contributions": [
+        "bug",
+        "code",
+        "content",
+        "doc",
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7,

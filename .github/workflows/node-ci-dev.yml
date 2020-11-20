@@ -1,4 +1,4 @@
-name: Develop Branch Testing
+name: Node CI Develop
 on:
   push:
     branches:

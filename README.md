@@ -1,34 +1,19 @@
 # dicty-components-navbar
+
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+
 [![All Contributors](https://img.shields.io/badge/all_contributors-2-orange.svg?style=flat-square)](#contributors-)
+
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 [![License](https://img.shields.io/badge/License-BSD%202--Clause-blue.svg)](LICENSE)  
-![GitHub tag](https://img.shields.io/github/v/tag/dictyBase/dicty-components-navbar)  
-![GitHub action](https://github.com/dictyBase/dicty-components-navbar/workflows/Testing/badge.svg)
-[![codecov](https://codecov.io/gh/dictyBase/dicty-components-navbar/branch/develop/graph/badge.svg)](https://codecov.io/gh/dictyBase/dicty-components-navbar)  
-[![Dependency Status](https://david-dm.org/dictyBase/dicty-components-navbar/develop.svg?style=flat-square)](https://david-dm.org/dictyBase/dicty-components-navbar/develop)
-[![devDependency Status](https://david-dm.org/dictyBase/dicty-components-navbar/develop/dev-status.svg?style=flat-square)](https://david-dm.org/dictyBase/dicty-components-navbar/develop?type=dev)  
-[![Technical debt](https://badgen.net/codeclimate/tech-debt/dictyBase/dicty-components-navbar)](https://codeclimate.com/github/dictyBase/dicty-components-navbar/trends/technical_debt)
-[![Issues](https://badgen.net/codeclimate/issues/dictyBase/dicty-components-navbar)](https://codeclimate.com/github/dictyBase/dicty-components-navbar/issues)
-[![Maintainability percentage](https://badgen.net/codeclimate/maintainability-percentage/dictyBase/dicty-components-navbar)](https://codeclimate.com/github/dictyBase/dicty-components-navbar)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=dictyBase/dicty-components-navbar)](https://dependabot.com)  
-![Issues](https://badgen.net/github/issues/dictyBase/dicty-components-navbar)
-![Open Issues](https://badgen.net/github/open-issues/dictyBase/dicty-components-navbar)
-![Closed Issues](https://badgen.net/github/closed-issues/dictyBase/dicty-components-navbar)
-![Total PRS](https://badgen.net/github/prs/dictyBase/dicty-components-navbar)
-![Open PRS](https://badgen.net/github/open-prs/dictyBase/dicty-components-navbar)
-![Closed PRS](https://badgen.net/github/closed-prs/dictyBase/dicty-components-navbar)
-![Merged PRS](https://badgen.net/github/merged-prs/dictyBase/dicty-components-navbar)  
-![Commits](https://badgen.net/github/commits/dictyBase/dicty-components-navbar/develop)
-![Last commit](https://badgen.net/github/last-commit/dictyBase/dicty-components-navbar/develop)
-![Branches](https://badgen.net/github/branches/dictyBase/dicty-components-navbar)
-![Tags](https://badgen.net/github/tags/dictyBase/dicty-components-navbar)
-![GitHub repo size](https://img.shields.io/github/repo-size/dictyBase/dicty-components-navbar?style=plastic)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/dictyBase/dicty-components-navbar?style=plastic)
-[![Lines of Code](https://badgen.net/codeclimate/loc/dictyBase/dicty-components-navbar)](https://codeclimate.com/github/dictyBase/dicty-components-navbar/code)  
-[![Funding](https://badgen.net/badge/NIGMS/Rex%20L%20Chisholm,dictyBase/yellow?list=|)](https://projectreporter.nih.gov/project_info_description.cfm?aid=9476993)
-[![Funding](https://badgen.net/badge/NIGMS/Rex%20L%20Chisholm,DSC/yellow?list=|)](https://projectreporter.nih.gov/project_info_description.cfm?aid=9438930)
+![GitHub tag](https://img.shields.io/github/v/tag/dictyBase/dicty-components-navbar)
+![GitHub action](https://github.com/dictyBase/dicty-components-navbar/workflows/Node%20CI%20Develop/badge.svg)  
+[![codecov](https://codecov.io/gh/dictyBase/dicty-components-navbar/branch/develop/graph/badge.svg)](https://codecov.io/gh/dictyBase/dicty-components-navbar)
+[![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/dictyBase/dicty-components-navbar)
+[![Maintainability](https://badgen.net/codeclimate/maintainability/dictyBase/dicty-components-navbar)](https://codeclimate.com/github/dictyBase/dicty-components-navbar)  
+![Last commit](https://badgen.net/github/last-commit/dictyBase/dicty-components-navbar/develop)  
+[![Funding](https://badgen.net/badge/Funding/Rex%20L%20Chisholm,dictyBase,DCR/yellow?list=|)](https://projectreporter.nih.gov/project_info_description.cfm?aid=10024726&icde=0)
 
 This is a responsive, themable navbar React library with [Material-UI styled components](https://material-ui.com/).
 
@@ -201,6 +186,23 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- markdownlint-enable -->
 <!-- prettier-ignore-end -->
+
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+
+## Misc badges
+
+![Issues](https://badgen.net/github/issues/dictyBase/dicty-components-navbar)
+![Open Issues](https://badgen.net/github/open-issues/dictyBase/dicty-components-navbar)
+![Closed Issues](https://badgen.net/github/closed-issues/dictyBase/dicty-components-navbar)  
+![Total PRS](https://badgen.net/github/prs/dictyBase/dicty-components-navbar)
+![Open PRS](https://badgen.net/github/open-prs/dictyBase/dicty-components-navbar)
+![Closed PRS](https://badgen.net/github/closed-prs/dictyBase/dicty-components-navbar)
+![Merged PRS](https://badgen.net/github/merged-prs/dictyBase/dicty-components-navbar)  
+![Commits](https://badgen.net/github/commits/dictyBase/dicty-components-navbar/develop)
+![Branches](https://badgen.net/github/branches/dictyBase/dicty-components-navbar)
+![Tags](https://badgen.net/github/tags/dictyBase/dicty-components-navbar)  
+![GitHub repo size](https://img.shields.io/github/repo-size/dictyBase/dicty-components-navbar?style=plastic)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/dictyBase/dicty-components-navbar?style=plastic)
+[![Lines of Code](https://badgen.net/codeclimate/loc/dictyBase/dicty-components-navbar)](https://codeclimate.com/github/dictyBase/dicty-components-navbar/code)

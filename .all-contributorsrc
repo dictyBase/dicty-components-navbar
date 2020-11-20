@@ -1,0 +1,28 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "wildlifehexagon",
+      "name": "Eric Hartline",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/13489381?v=4",
+      "profile": "http://www.erichartline.net/",
+      "contributions": [
+        "bug",
+        "code",
+        "content",
+        "doc",
+        "maintenance"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "dicty-components-navbar",
+  "projectOwner": "dictyBase",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}

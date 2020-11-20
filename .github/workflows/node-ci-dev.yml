@@ -10,11 +10,13 @@ jobs:
       - name: set up node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 14.15.0
       - name: check out code
         uses: actions/checkout@v2
       - name: install
         run: yarn install
+      - name: eslint
+        run: yarn lint
       - name: unit tests
         run: yarn test -- --coverage
         env:

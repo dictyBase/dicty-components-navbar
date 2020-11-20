@@ -1,5 +1,7 @@
-name: Pull Request Testing
-on: pull_request
+name: Testing (Pull Request)
+on:
+  pull_request:
+    types: [edited, labeled, opened, synchronize, reopened]
 jobs:
   test:
     name: Unit tests
@@ -8,7 +10,7 @@ jobs:
       - name: set up node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 14.15.0
       - name: check out code
         uses: actions/checkout@v2
       - name: install

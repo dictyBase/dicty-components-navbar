@@ -22,7 +22,7 @@ jobs:
         env:
           CI: true
       - name: upload test coverage to codecov
-        uses: codecov/codecov-action@v1.0.15
+        uses: codecov/codecov-action@v1.1.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
       - name: build

@@ -23,10 +23,10 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.13.0",
-    "@babel/core": "^7.13.8",
+    "@babel/core": "^7.13.10",
     "@babel/plugin-proposal-class-properties": "^7.12.13",
     "@babel/plugin-proposal-function-bind": "^7.12.13",
-    "@babel/preset-env": "^7.13.8",
+    "@babel/preset-env": "^7.13.10",
     "@babel/preset-flow": "^7.12.13",
     "@babel/preset-react": "^7.12.13",
     "@material-ui/styles": "^4.11.3",
@@ -46,7 +46,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-scripts": "^4.0.3",
-    "semantic-release": "^17.4.1",
+    "semantic-release": "^17.4.2",
     "webpack-cli": "^4.5.0"
   },
   "lint-staged": {

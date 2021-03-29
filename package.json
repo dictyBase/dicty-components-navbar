@@ -28,7 +28,7 @@
     "@babel/plugin-proposal-class-properties": "^7.12.13",
     "@babel/plugin-proposal-function-bind": "^7.12.13",
     "@babel/preset-env": "^7.13.10",
-    "@babel/preset-flow": "^7.12.13",
+    "@babel/preset-flow": "^7.13.13",
     "@babel/preset-react": "^7.12.13",
     "@material-ui/styles": "^4.11.3",
     "@semantic-release/git": "^9.0.0",

@@ -16,7 +16,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: merge
         if: steps.wait-for-unit-tests.outputs.conclusion == 'success'
-        uses: actions/github-script@v3
+        uses: actions/github-script@v4.0.2
         with:
           script: |
             github.pulls.merge({

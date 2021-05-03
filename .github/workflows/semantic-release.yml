@@ -13,9 +13,20 @@ jobs:
           node-version: 14.15.0
       - name: check out code
         uses: actions/checkout@v2
-      - name: install semantic release
-        run: yarn add semantic-release@17.x
+      - name: install deps
+        run: yarn install
       - name: release
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: yarn semantic-release
+  merge:
+    needs: semantic-release
+    runs-on: ubuntu-20.04
+    steps:
+      - name: merge to develop
+        uses: devmasx/merge-branch@v1.3.1
+        with:
+          type: now
+          from_branch: master
+          target_branch: develop
+          github_token: ${{ secrets.GITHUB_TOKEN }}

@@ -52,7 +52,7 @@
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-scripts": "^4.0.3",
-    "semantic-release": "^17.4.3",
+    "semantic-release": "^17.4.4",
     "webpack-cli": "^4.7.2"
   },
   "lint-staged": {

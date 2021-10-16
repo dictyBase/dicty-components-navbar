@@ -43,7 +43,7 @@
     "enzyme-adapter-react-16": "^1.15.6",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "flow-bin": "^0.154.0",
+    "flow-bin": "^0.162.0",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.2",
     "husky": "7",

@@ -1,4 +1,3 @@
-// @flow
 import React from "react"
 import { styled, withTheme } from "@material-ui/styles"
 

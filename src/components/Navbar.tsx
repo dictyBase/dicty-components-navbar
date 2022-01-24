@@ -1,4 +1,3 @@
-// @flow
 import React, { Component, forwardRef } from "react"
 import { ThemeProvider, styled } from "@material-ui/styles"
 import Brand from "./Brand"

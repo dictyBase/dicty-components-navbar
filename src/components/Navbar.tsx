@@ -72,13 +72,13 @@ const Header = styled("li")({
 })
 
 type Props = {
-  items: Array<Object>,
-  brand: Object,
-  theme: Object,
+  items: Array<Object>
+  brand: Object
+  theme: Object
 }
 type State = {
-  activeIndex: number,
-  open: boolean,
+  activeIndex: number
+  open: boolean
 }
 
 /**

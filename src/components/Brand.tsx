@@ -26,11 +26,11 @@ const Link = styled(({ theme, ...other }) => <a {...other} />)({
 
 type Props = {
   /** Title of link */
-  title: String,
+  title: String
   /** Link URL */
-  href: String,
+  href: String
   /** Material-UI theme */
-  theme: Object,
+  theme: Object
 }
 
 /**

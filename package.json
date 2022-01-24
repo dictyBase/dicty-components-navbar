@@ -26,12 +26,6 @@
       "pre-commit": "tsdx lint"
     }
   },
-  "prettier": {
-    "printWidth": 80,
-    "semi": true,
-    "singleQuote": true,
-    "trailingComma": "es5"
-  },
   "module": "dist/test.esm.js",
   "size-limit": [
     {
@@ -65,7 +59,8 @@
   },
   "lint-staged": {
     "*.{js,jsx,json,css}": [
-      "prettier --no-semi --trailing-comma all --jsx-bracket-same-line true --write"
+      "prettier --no-semi --trailing-comma all --jsx-bracket-same-line true --write",
+      "git add"
     ]
   }
 }

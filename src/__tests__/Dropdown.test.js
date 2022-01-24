@@ -1,7 +1,7 @@
 // @flow
 import React from "react"
 import { mount } from "enzyme"
-import Dropdown from "../Components/Dropdown"
+import Dropdown from "../components/Dropdown"
 
 describe("Dropdown", () => {
   const props = {

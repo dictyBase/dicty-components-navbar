@@ -1,6 +1,6 @@
 import React from "react"
 import { mount } from "enzyme"
-import Brand from "../Components/Brand"
+import Brand from "../components/Brand"
 
 describe("Brand", () => {
   const props = {

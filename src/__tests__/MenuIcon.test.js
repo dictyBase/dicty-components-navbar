@@ -1,6 +1,6 @@
 import React from "react"
 import { mount } from "enzyme"
-import MenuIcon from "../Components/MenuIcon"
+import MenuIcon from "../components/MenuIcon"
 
 describe("Menu Icon", () => {
   const props = {

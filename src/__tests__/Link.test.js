@@ -1,6 +1,6 @@
 import React from "react"
 import { mount } from "enzyme"
-import Link from "../Components/Link"
+import Link from "../components/Link"
 
 describe("Link", () => {
   const props = {

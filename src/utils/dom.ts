@@ -1,4 +1,3 @@
-// @flow
 export const transitionFromAuto = (el: any, endHeight: number) => {
   el.style.height = getComputedStyle(el).height
   // Force repaint

@@ -1,4 +1,3 @@
-// @flow
 import { parseToHsl, toColorString } from "polished"
 
 export const darkenOrLighten = (color: String) => {

@@ -1,4 +1,3 @@
-// @flow
 import React from "react"
 import { styled, withTheme } from "@material-ui/styles"
 
@@ -23,17 +22,16 @@ const Anchor = styled(({ theme, ...other }) => <a {...other} />)({
 
 type Props = {
   /** Link title */
-  title: String,
+  title: String
   /** Link URL */
-  href: String,
+  href: String
   /** Material-UI theme */
-  theme: Object,
+  theme: Object
 }
 
 /**
  * Link is used for menu items without dropdowns.
  */
-
 const Link = (props: Props) => {
   const { title, href, theme } = props
 
